@@ -1,15 +1,6 @@
 package Dominio;
 
-public class Alumno {
-	int id;
-	String mail;
-	int legajo;
-	String dni;
-	String nombre;
-	String apellido;
-	String fechaNacimiento;
-	String direccion;
+public class Alumno extends Persona {
+
 	Provincia provincia;
-	Nacionalidad nacionalidad;
-	String telefono;
 }

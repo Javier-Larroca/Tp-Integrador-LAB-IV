@@ -4,9 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <title>Document</title>
+
+    <style>
+        .w-20{
+            width: 20%;
+        }
+    </style>
+
 <title>Insert title here</title>
 </head>
-<body>
+<body class="bg-primary">
+
+	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
+	
+	<jsp:include page="./HTML/InicioAdministrador.html"></jsp:include>
+	
+	<jsp:include page="./HTML/Footer.html"></jsp:include>
+	
+	<jsp:include page="./HTML/Scripts.html"></jsp:include>
 
 </body>
 </html>
