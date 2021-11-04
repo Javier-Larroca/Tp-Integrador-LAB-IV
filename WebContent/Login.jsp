@@ -10,7 +10,8 @@
 			integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
 			crossorigin="anonymous"
 		/>
-<title>Insert title here</title>
+		<link rel="icon" type="image/png" href="./utn.ico" />
+<title>UTN-TUP</title>
 </head>
 <body>
 

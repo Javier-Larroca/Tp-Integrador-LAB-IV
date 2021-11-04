@@ -90,12 +90,22 @@ create table materias
  insert into nacionalidades (Descripcion) values ('Costa Rica');
  insert into nacionalidades (Descripcion) values ('Puerto Rico');
  
+    create table tiposUsuario
+(
+	Id int primary key not null AUTO_INCREMENT,
+    Descripcion varchar(64) not null
+);
+
+ insert into tiposUsuario (Descripcion) values ('Administrador');
+ insert into tiposUsuario (Descripcion) values ('Docente');
+ 
 create table usuarios
 (
 	Id int primary key not null AUTO_INCREMENT,
     Mail varchar(100) not null,
     Contrasena varchar(20) not null,
-    Tipo int not null
+    Tipo int not null,
+    FOREIGN KEY(Tipo) REFERENCES tiposUsuario(Id)
 );
 
  insert into usuarios (Mail,Contrasena,Tipo) values ('admin@admin.com','admin',1);
@@ -103,7 +113,6 @@ create table usuarios
  create table docentes
  (
 	Id int primary key not null,
-    Mail varchar(100) not null,
     Nombre varchar(64) not null,
     Apellido varchar(64) not null,
     Dni varchar(10) not null,

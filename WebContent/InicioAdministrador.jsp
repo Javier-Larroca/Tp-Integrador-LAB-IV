@@ -9,15 +9,14 @@
     <!-- fontawesome icon -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-    <title>Document</title>
-
+<link rel="icon" type="image/png" href="./utn.ico" />
     <style>
         .w-20{
             width: 20%;
         }
     </style>
 
-<title>Insert title here</title>
+<title>UTN-TUP</title>
 </head>
 <body class="bg-primary">
 
