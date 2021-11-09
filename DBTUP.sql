@@ -165,6 +165,10 @@ create table usuarios
  (
 	IdCurso int not null,
     IdAlumno int not null,
+    Parcial1 int null,
+    Parcial2 int null,
+    Recuperatorio1 int null,
+    Recuperatorio2 int null,
     
     FOREIGN KEY(IdCurso) REFERENCES cursos(Id),
     FOREIGN KEY(IdAlumno) REFERENCES alumnos(Id),
