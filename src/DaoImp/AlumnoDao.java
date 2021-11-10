@@ -191,6 +191,4 @@ public class AlumnoDao implements IAlumnoDao {
 				nacimiento, telefono, nac, estado);
 	}
 
-
-
 }
