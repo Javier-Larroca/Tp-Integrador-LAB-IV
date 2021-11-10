@@ -51,7 +51,7 @@ public class AlumnoServlet extends HttpServlet {
 		
 		
 		if(request.getParameter("btnGuardar") != null) {
-			
+			ArrayList<Alumno> listaDeAlumnos = new ArrayList<Alumno>();
 			int id = Integer.parseInt(request.getParameter("Id"));
 			String mail = request.getParameter("Mail");
 			int legajo = Integer.parseInt(request.getParameter("Legajo"));
@@ -79,6 +79,12 @@ public class AlumnoServlet extends HttpServlet {
 					alumnoNegocio.agregar(nuevo);
 					
 				}
+				
+				listaDeAlumnos = alumnoNegocio.listar();
+				request.setAttribute("listaAlumnos", listaDeAlumnos);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("AbmAlumnos.jsp");
+				rd.forward(request, response);
 				
 				
 				
