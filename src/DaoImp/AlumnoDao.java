@@ -14,6 +14,10 @@ import Dominio.Provincia;
 
 public class AlumnoDao implements IAlumnoDao {
 	
+	public AlumnoDao() {
+		
+	}
+	
 	private static final String agregar = "insert into alumnos(Mail, Nombre, Apellido, Dni, Legajo, FechaNac, IdProvincia, IdNacionalidad, Telefono, Direccion, Estado) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 	private static final String eliminar = "UPDATE alumnos SET Estado = false WHERE Id = ?";
 	private static final String modificar = "UPDATE alumnos SET Nombre = ?, Apellido = ?, Mail = ?, Dni = ?, Legajo = ?,  FechaNac = ?, IdProvincia = ?, IdNacionalidad = ?, Telefono = ?, Direccion = ?, Estado = ? WHERE Id = ?";
