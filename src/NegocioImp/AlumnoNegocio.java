@@ -1,5 +1,6 @@
 package NegocioImp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import DaoImp.AlumnoDao;
@@ -9,6 +10,10 @@ import Negocio.IAlumnoNegocio;
 public class AlumnoNegocio implements IAlumnoNegocio {
 	
 	AlumnoDao datos = new AlumnoDao();
+	
+	public AlumnoNegocio (){
+		
+	}
 
 	@Override
 	public boolean agregar(Alumno alumno) {
@@ -26,7 +31,7 @@ public class AlumnoNegocio implements IAlumnoNegocio {
 	}
 
 	@Override
-	public List<Alumno> listar() {
+	public ArrayList<Alumno> listar() {
 		return datos.listar();
 	}
 
