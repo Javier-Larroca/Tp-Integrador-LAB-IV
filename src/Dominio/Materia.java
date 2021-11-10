@@ -1,6 +1,7 @@
 package Dominio;
 
 public class Materia {
-	int id;
-	String descripcion;
+	private int id;
+	private String descripcion;
+	
 }

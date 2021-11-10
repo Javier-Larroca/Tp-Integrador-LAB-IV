@@ -2,19 +2,15 @@ package Dominio;
 
 public class Persona {
 	
-	int id;
-	String mail;
-	int legajo;
-	String dni;
-	String nombre;
-	String apellido;
-	String fechaNacimiento;
-	String direccion;
-	Nacionalidad nacionalidad;
-	String telefono;
-
-	public Persona() {
-		// TODO Auto-generated constructor stub
-	}
+	private int id;
+	private String mail;
+	private int legajo;
+	private String dni;
+	private String nombre;
+	private String apellido;
+	private String fechaNacimiento;
+	private String direccion;
+	private Nacionalidad nacionalidad;
+	private String telefono;
 
 }
