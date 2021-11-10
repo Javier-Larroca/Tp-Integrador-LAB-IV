@@ -21,6 +21,12 @@ public class CursoNegocio implements ICursoNegocio {
 		
 		return datos.listar();
 	}
+
+	@Override
+	public ArrayList<Curso> listadoPorDocente(int id) {
+		
+		return datos.listadoPorDocente(id);
+	}
 	
 	
 	

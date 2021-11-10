@@ -1,3 +1,5 @@
+<%@page import="Dominio.Curso"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,9 +26,48 @@ crossorigin="anonymous" />
 </head>
 <body class="bg-primary">
 
+	<%
+
+	ArrayList<Curso> lista = new ArrayList<Curso>();
+	if(request.getAttribute("ListCurso")!=null)
+		lista = (ArrayList<Curso>)request.getAttribute("ListCurso");		
+
+	%>
+
 	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
 
 	<jsp:include page="./HTML/AbmCursos.html"></jsp:include>
+	
+	<table id="table_id" class="display">
+						<thead class="text-center">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Materia</th>
+								<th scope="col">Semestre</th>
+								<th scope="col">Año</th>
+								<th scope="col">Docente</th>
+								<th scope="col">Alumnos</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+						<% for (Curso item : lista) { %>
+							<tr>
+								<th scope="row"><%= item.getId() %></th>
+								<td><%= item.getMateria().getDescripcion() %></td>
+								<td><%= item.getSemestre() == 1 ? "1er Semestre" : "2do Semestre" %></td>
+								<td><%= item.getAnio() %></td>
+								<td><%= item.getDocente().getNombre() %></td>
+								<td> <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-user-plus"></i> </button> </td>
+	
+							</tr>
+						<% } %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 	
 	<jsp:include page="./HTML/Footer.html"></jsp:include>
 	

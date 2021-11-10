@@ -25,6 +25,13 @@ public class Curso {
 		this.alumnos = alumnos;
 	}
 	
+	public Curso(int semestre, Materia materia, int anio, Docente docente) {
+		this.semestre = semestre;
+		this.materia = materia;
+		this.anio = anio;
+		this.docente = docente;
+	}
+	
 	public int getId() {
 		return id;
 	}
