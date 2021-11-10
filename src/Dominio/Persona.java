@@ -23,7 +23,7 @@ public class Persona {
 	}
 
 	public Persona(String mail, int legajo, String dni, String nombre, String apellido, String direccion,
-			String nacimiento, String telefono, Nacionalidad nacionalidad,boolean estado) {
+			String nacimiento, String telefono, Nacionalidad nacionalidad) {
 		
 		this.mail = mail;
 		this.legajo = legajo;
@@ -33,7 +33,7 @@ public class Persona {
 		this.direccion = direccion;
 		this.fechaNacimiento = nacimiento;
 		this.telefono = telefono;
-		this.estado = estado;
+		this.estado = true;
 		///agregar bien la nacionalidad
 		this.nacionalidad = nacionalidad;
 	}

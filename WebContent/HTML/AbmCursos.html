@@ -8,7 +8,7 @@
 					<h3 class="card-title">Cargar Curso</h3>
 				</div>
 				<div class="card-body">
-					<form action="">
+					<form action="CusoServlet" method="get">
 						<div class="form">
 							<select class="custom-select my-2" name="Materia" id="">
 								<option value="1">Laboratorio I</option>
@@ -16,68 +16,22 @@
 							</select> <select class="custom-select" name="Semestre" id="">
 								<option value="1">1er Semestre</option>
 								<option value="2">2do Semestre</option>
-							</select> <input name="Año" type="text" class="form-control my-2"
+							</select> <input name="Anio" type="text" class="form-control my-2"
 								placeholder="Año" /> <select class="custom-select"
 								name="Docente" id="">
 								<option value="1">Tamara Herrera</option>
 								<option value="2">Claudio Fernandez</option>
 							</select>
-
+							
+						</div>
+						<div class="card-footer text-right">
+							<input type="submit" class="btn btn-primary" name="btnAgregar" value="Guardar"/>
 						</div>
 					</form>
-				</div>
-				<div class="card-footer text-right">
-					<button class="btn btn-primary">Guardar</button>
 				</div>
 			</div>
 		</div>
 		<div class="col">
 			<div class="card bg-secondary">
 				<div class="card-body">
-					<table id="table_id" class="display">
-						<thead class="text-center">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Materia</th>
-								<th scope="col">Semestre</th>
-								<th scope="col">Año</th>
-								<th scope="col">Docente</th>
-								<th scope="col">Alumnos</th>
-							</tr>
-						</thead>
-						<tbody class="text-center">
-							<tr>
-								<th scope="row">1</th>
-								<td>Laboratorio I</td>
-								<td>1er Semestre</td>
-								<td>2021</td>
-								<td>Tamara Herrera</td>
-								<td> <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-user-plus"></i> </button> </td>
-	
-							</tr>
-							<tr>
-								<th scope="row">1</th>
-								<td>Laboratorio I</td>
-								<td>1er Semestre</td>
-								<td>2021</td>
-								<td>Tamara Herrera</td>
-								<td> <button class="btn btn-info"> <i class="fas fa-user-plus"></i> </button> </td>
-								
-							</tr>
-							<tr>
-								<th scope="row">1</th>
-								<td>Laboratorio I</td>
-								<td>1er Semestre</td>
-								<td>2021</td>
-								<td>Tamara Herrera</td>
-								<td> <button class="btn btn-info"> <i class="fas fa-user-plus"></i> </button> </td>
-								
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-s
+					

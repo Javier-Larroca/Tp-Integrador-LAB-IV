@@ -14,7 +14,11 @@ import Dominio.Provincia;
 
 public class AlumnoDao implements IAlumnoDao {
 	
-	private static final String agregar = "insert into alumnos(Mail, Nombre, Apellido, Dni, Legajo, FechaNac, IdProvincia, IdNacionalidad, Telefono, Direccion, Estado) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+	public AlumnoDao() {
+		
+	}
+	
+	private static final String agregar = "insert into alumnos(Mail, Nombre, Apellido, Dni, Legajo, FechaNac, IdProvincia, IdNacionalidad, Telefono, Direccion, ) values(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 	private static final String eliminar = "UPDATE alumnos SET Estado = false WHERE Id = ?";
 	private static final String modificar = "UPDATE alumnos SET Nombre = ?, Apellido = ?, Mail = ?, Dni = ?, Legajo = ?,  FechaNac = ?, IdProvincia = ?, IdNacionalidad = ?, Telefono = ?, Direccion = ?, Estado = ? WHERE Id = ?";
 	private static final String listar = "SELECT * FROM alumnos";
@@ -38,7 +42,6 @@ public class AlumnoDao implements IAlumnoDao {
 			statement.setInt(8, alumno.getNacionalidad().getId());
 			statement.setString(9, alumno.getTelefono());
 			statement.setString(10, alumno.getDireccion());
-			statement.setBoolean(11, alumno.getEstado());
 			
 			if(statement.executeUpdate() > 0)
 			{
@@ -147,7 +150,7 @@ public class AlumnoDao implements IAlumnoDao {
 	}
 	
 	@Override
-	public List<Alumno> listar() {
+	public ArrayList<Alumno> listar() {
 		PreparedStatement statement;
 		ResultSet resultado;
 		ArrayList<Alumno> listaDeAlumnos = new ArrayList<Alumno>();

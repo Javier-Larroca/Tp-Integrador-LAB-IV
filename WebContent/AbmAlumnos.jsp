@@ -1,3 +1,6 @@
+
+<%@page import="Dominio.Alumno"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,9 +26,68 @@ crossorigin="anonymous" />
 </head>
 <body class="bg-primary">
 
+	<%
+
+	ArrayList<Alumno> lista = new ArrayList<Alumno>();
+	if(request.getAttribute("listaAlumnos")!=null)
+		lista = (ArrayList<Alumno>)request.getAttribute("listaAlumnos");		
+
+	%>
+
+
 	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
 	
 	<jsp:include page="./HTML/AbmAlumnos.html"></jsp:include>
+	
+	<table id="table_id" class="display">
+						<thead class="text-center">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Apellido</th>
+								<th scope="col">DNI</th>
+								<th scope="col">Fecha de Nacimiento</th>
+								<th scope="col">Dirección</th>
+								<th scope="col">Provincia</th>
+								<th scope="col">Nacionalidad</th>
+								<th scope="col">Email</th>
+								<th scope="col">Teléfono</th>
+								<th scope="col">Editar</th>
+								<th scope="col">Eliminar</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+						<%         for (Alumno item : lista) { %>
+							<tr id="<%=item.getId()%>">
+								<th scope="row"><%=item.getId() %></th>
+								<td><%=item.getNombre() %></td>
+								<td><%=item.getApellido() %></td>
+								<td><%=item.getDni() %></td>
+								<td><%=item.getFechaNacimiento() %></td>
+								<td><%=item.getDireccion() %></td>
+								<td><%=item.getProvincia().getNombre() %></td>
+								<td><%=item.getNacionalidad().getNombre() %></td>
+								<td><%=item.getMail() %></td>
+								<td><%=item.getTelefono() %></td>
+								<td>
+									<button id="btnEditar" class="btn btn-success">
+										<i class="fas fa-edit"></i>
+									</button>
+								</td>
+								<td>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+										<i class="fas fa-trash-alt"></i>
+									</button>
+								</td>
+							</tr>
+						<% } %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 	
 	<jsp:include page="./HTML/Footer.html"></jsp:include>
 	
