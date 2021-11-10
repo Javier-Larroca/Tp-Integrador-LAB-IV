@@ -105,11 +105,10 @@ create table usuarios
     Mail varchar(100) not null,
     Contrasena varchar(20) not null,
     Tipo int not null,
-    Estado bit not null,
     FOREIGN KEY(Tipo) REFERENCES tiposUsuario(Id)
 );
 
- insert into usuarios (Mail,Contrasena,Tipo,Estado) values ('admin@admin.com','admin',1,true);
+ insert into usuarios (Mail,Contrasena,Tipo) values ('admin@admin.com','admin',1);
  
  create table docentes
  (
@@ -123,7 +122,7 @@ create table usuarios
     IdNacionalidad int not null,
     Telefono varchar(20) not null,
     Direccion varchar(250) not null,
-    Estado bit not null,
+    
     FOREIGN KEY(IdNacionalidad) REFERENCES nacionalidades(Id),
     FOREIGN KEY(IdLocalidad) REFERENCES localidades(Id),
     FOREIGN KEY(Id) REFERENCES usuarios(Id)
@@ -143,7 +142,6 @@ create table usuarios
     IdNacionalidad int not null,
     Telefono varchar(20) not null,
     Direccion varchar(250) not null,
-    Estado bit not null,
     
     FOREIGN KEY(IdProvincia) REFERENCES provincias(Id),
     FOREIGN KEY(IdNacionalidad) REFERENCES nacionalidades(Id)
