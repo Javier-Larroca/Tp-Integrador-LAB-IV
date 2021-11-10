@@ -21,6 +21,11 @@ public class CursoDao implements ICursoDao {
 	private String pass = "root";
 	private String dbName = "DBTUP";
 	
+	public CursoDao ()
+	{
+		
+	}
+	
 	public boolean agregar(Curso curso)
 	{
 		try {
