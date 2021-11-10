@@ -122,6 +122,7 @@ create table usuarios
     IdNacionalidad int not null,
     Telefono varchar(20) not null,
     Direccion varchar(250) not null,
+    Estado bit not null default True,
     
     FOREIGN KEY(IdNacionalidad) REFERENCES nacionalidades(Id),
     FOREIGN KEY(IdLocalidad) REFERENCES localidades(Id),
@@ -142,6 +143,7 @@ create table usuarios
     IdNacionalidad int not null,
     Telefono varchar(20) not null,
     Direccion varchar(250) not null,
+    Estado bit not null default True,
     
     FOREIGN KEY(IdProvincia) REFERENCES provincias(Id),
     FOREIGN KEY(IdNacionalidad) REFERENCES nacionalidades(Id)
