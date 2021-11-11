@@ -1,9 +1,10 @@
 package Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Dominio.Nacionalidad;
 
 public interface INacionalidadDao {
-	public List<Nacionalidad> listar();	
+	public ArrayList<Nacionalidad> listar();	
 }

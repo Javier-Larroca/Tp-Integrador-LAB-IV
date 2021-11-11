@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Dao.ILocalidadDao;
 import Dominio.Localidad;
 
 public class LocalidadDao implements ILocalidadDao {
@@ -14,7 +15,7 @@ public class LocalidadDao implements ILocalidadDao {
 	private static final String listar = "SELECT * FROM localidades";
 	
 	@Override
-	public List<Localidad> listar() {
+	public ArrayList<Localidad> listar() {
 		PreparedStatement statement;
 		ResultSet resultado;
 		ArrayList<Localidad> listaDeLocalidades = new ArrayList<Localidad>();

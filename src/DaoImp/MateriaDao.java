@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Dao.IMateriaDao;
 import Dominio.Materia;
 
 public class MateriaDao implements IMateriaDao {
@@ -14,7 +15,7 @@ public class MateriaDao implements IMateriaDao {
 	private static final String listar = "SELECT * FROM materias";
 	
 	@Override
-	public List<Materia> listar() {
+	public ArrayList<Materia> listar() {
 		PreparedStatement statement;
 		ResultSet resultado;
 		ArrayList<Materia> listaDeMaterias = new ArrayList<Materia>();

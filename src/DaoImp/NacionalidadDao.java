@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Dao.INacionalidadDao;
 import Dominio.Nacionalidad;
 
 public class NacionalidadDao implements INacionalidadDao {
@@ -14,7 +15,7 @@ public class NacionalidadDao implements INacionalidadDao {
 	private static final String listar = "SELECT * FROM nacionalidades";
 	
 	@Override
-	public List<Nacionalidad> listar() {
+	public ArrayList<Nacionalidad> listar() {
 		PreparedStatement statement;
 		ResultSet resultado;
 		ArrayList<Nacionalidad> listaDeNacionalidades = new ArrayList<Nacionalidad>();

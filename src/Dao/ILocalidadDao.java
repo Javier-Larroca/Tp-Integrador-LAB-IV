@@ -1,9 +1,10 @@
 package Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Dominio.Localidad;
 
 public interface ILocalidadDao {
-	public List<Localidad> listar();	
+	public ArrayList<Localidad> listar();	
 }
