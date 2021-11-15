@@ -1,6 +1,11 @@
-/Dominio/
 /Dao/
 /DaoImp/
+<<<<<<< HEAD
 /Negocio/
 /NegocioImp/
 /Servlet/
+=======
+/Dominio/
+/Negocio/
+/NegocioImp/
+>>>>>>> Elmer
