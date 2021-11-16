@@ -13,7 +13,7 @@ public class Docente extends Persona{
 public Docente(String mail, int legajo, String dni, String nombre, String apellido, String direccion,
 			String nacimiento, String telefono, Nacionalidad nacionalidad, Localidad localidad) {
 		super(mail, legajo, dni, nombre, apellido, direccion, nacimiento, telefono, nacionalidad);
-		this.localidad = new Localidad(localidad.getDescripcion());
+		this.localidad = localidad;
 	}
 
 public Localidad getLocalidad() {

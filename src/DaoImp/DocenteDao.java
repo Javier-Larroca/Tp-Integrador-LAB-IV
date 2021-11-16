@@ -9,15 +9,20 @@ import java.util.List;
 
 import Dao.IDocenteDao;
 import Dominio.Docente;
+import Dominio.Localidad;
+import Dominio.Nacionalidad;
 
 public class DocenteDao implements IDocenteDao{
 
-	private static final String agregar = "INSERT INTO DOCENTES VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String eliminar = "DELETE FROM DOCENTES WHERE ID = ?";
+	private static final String agregar = "INSERT INTO DOCENTES VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT)";
+	private static final String eliminar = "UPDATE DOCENTES SET ESTADO = 0 WHERE ID = ?";
 	private static final String modificar = "UPDATE DOCENTES SET NOMBRE = ?, APELLIDO = ?, DNI = ?, LEGAJO = ?, FechaNac = ?, "
 											+ "IDLOCALIDAD = ?, IDNACIONALIDAD = ?, TELEFONO = ?, DIRECCION = ? WHERE ID = ?";
-	private static final String listar = "SELECT * FROM personas";
-	private static final String obtenerDocente = "SELECT ID FROM DOCENTES WHERE ID = ?";
+	private static final String listar = "SELECT DOC.*, U.MAIL, LOC.DESCRIPCION DESCLOCALIDAD, NAC.DESCRIPCION DESCNACIONALIDAD "
+										+ "FROM DOCENTES DOC INNER JOIN USUARIOS U ON U.ID = DOC.ID "
+										+ "INNER JOIN LOCALIDADES LOC ON LOC.ID = DOC.IDLOCALIDAD "
+										+ "INNER JOIN NACIONALIDADES NAC ON NAC.ID = DOC.IDNACIONALIDAD WHERE ESTADO = 1";
+	private static final String existeDocente = "SELECT ID FROM DOCENTES WHERE DNI = ?";
 	
 	@Override
 	public boolean agregar(Docente docente) {
@@ -27,9 +32,16 @@ public class DocenteDao implements IDocenteDao{
 		try
 		{
 			statement = conexion.prepareStatement(agregar);
-			//statement.setInt(1, docente.getDNI());
-			//statement.setString(2, persona.getNombre());
-			//statement.setString(3, persona.getApellido());
+			statement.setInt(1, docente.getId());
+			statement.setString(2, docente.getNombre());
+			statement.setString(3, docente.getApellido());
+			statement.setString(4, docente.getDni());
+			statement.setInt(5, docente.getLegajo());
+			statement.setString(6, docente.getFechaNacimiento());
+			statement.setInt(7, docente.getLocalidad().getId());
+			statement.setInt(8, docente.getNacionalidad().getId());
+			statement.setString(9, docente.getTelefono());
+			statement.setString(10, docente.getDireccion());
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
@@ -45,14 +57,14 @@ public class DocenteDao implements IDocenteDao{
 				e1.printStackTrace();
 			}
 		}
-		finally {
+		/** finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		} **/
 		
 		return docenteAgregado;
 	}
@@ -65,7 +77,7 @@ public class DocenteDao implements IDocenteDao{
 		try 
 		{
 			statement = conexion.prepareStatement(eliminar);
-			//statement.setInt(1, dni);
+			statement.setInt(1, id);
 			if(statement.executeUpdate() > 0) {
 				conexion.commit();
 				eliminaDocente = true;
@@ -82,14 +94,14 @@ public class DocenteDao implements IDocenteDao{
 				e2.printStackTrace();
 			}
 		}
-		finally {
+		/**finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}**/
 		
 		return eliminaDocente;
 	}
@@ -101,9 +113,16 @@ public class DocenteDao implements IDocenteDao{
 		boolean modificaDocente = false;
 		try {
 			statement = conexion.prepareStatement(modificar);
-			//statement.setString(1, persona.getNombre());
-			//statement.setString(2, persona.getApellido());
-			//statement.setInt(3, persona.getDNI());
+			statement.setString(1, docente.getNombre());
+			statement.setString(2, docente.getApellido());
+			statement.setString(3, docente.getDni());
+			statement.setInt(4, docente.getLegajo());
+			statement.setString(5, docente.getFechaNacimiento());
+			statement.setInt(6, docente.getLocalidad().getId());
+			statement.setInt(7, docente.getNacionalidad().getId());
+			statement.setString(8, docente.getTelefono());
+			statement.setString(9, docente.getDireccion());
+			statement.setInt(10, docente.getId());
 			
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
@@ -116,14 +135,15 @@ public class DocenteDao implements IDocenteDao{
 			}catch(SQLException e2){
 				e2.printStackTrace();
 			}
-		}finally {
+		}
+		/**finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}**/
 		
 		return modificaDocente;
 	}
@@ -137,8 +157,8 @@ public class DocenteDao implements IDocenteDao{
 		
 		try 
 		{
-			statement = conexion.prepareStatement(obtenerDocente);
-			//statement.setInt(1, dni);
+			statement = conexion.prepareStatement(existeDocente);
+			statement.setString(1, dni);
 			resultado = statement.executeQuery();
 			
 			if(resultado.next()) existe = true;
@@ -147,14 +167,14 @@ public class DocenteDao implements IDocenteDao{
 		{
 			e.printStackTrace();
 		}
-		finally {
+		/**finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}**/
 		return existe;
 	}
 
@@ -186,13 +206,41 @@ public class DocenteDao implements IDocenteDao{
 		return listaDocentes;
 	}
 	
+	@Override
+	public Docente obtenerDocente(int id) {
+		PreparedStatement statement;
+		ResultSet resultado;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		
+		try 
+		{
+			statement = conexion.prepareStatement(listar + " AND ID = ?");
+			statement.setInt(1, id);
+			resultado = statement.executeQuery();
+			
+			if(resultado.next()) return parseDocente(resultado);
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	private Docente parseDocente(ResultSet resultSet) throws SQLException
 	{
-		//int dni = resultSet.getInt("Dni");
+		int id = resultSet.getInt("Id");
 		String nombre = resultSet.getString("Nombre");
 		String apellido = resultSet.getString("Apellido");
-		//return new Docente(dni, nombre, apellido);
-		return new Docente(nombre,apellido);
+		String dni = resultSet.getString("Dni");
+		int legajo = resultSet.getInt("Legajo");
+		String fechaNac = resultSet.getString("FechaNac");
+		Localidad loc = new Localidad(resultSet.getInt("IdLocalidad"), resultSet.getString("DescLocalidad"));
+		Nacionalidad nac = new Nacionalidad(resultSet.getInt("IdNacionalidad"), resultSet.getString("DescNacionalidad"));
+		String telefono = resultSet.getString("Telefono");
+		String direccion = resultSet.getString("Direccion");
+		String mail = resultSet.getString("Mail");
+		return new Docente(mail, legajo, dni, nombre, apellido, direccion, fechaNac, telefono, nac, loc);
 	}
 
 }

@@ -21,6 +21,11 @@ public class Localidad {
 		this.descripcion = descripcion;
 	}
 	
+	public Localidad(int id, String descripcion) {
+		this.id = id;
+		this.descripcion = descripcion;
+	}
+	
 	public Localidad(){
 
 	}

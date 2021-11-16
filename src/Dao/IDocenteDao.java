@@ -8,5 +8,6 @@ public interface IDocenteDao {
 	public boolean eliminar(int id);
 	public boolean modificar(Docente docente);
 	public boolean existe(String dni);
+	public Docente obtenerDocente(int id);
 	public List<Docente> listar();
 }
