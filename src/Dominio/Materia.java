@@ -21,6 +21,11 @@ public class Materia {
 		this.descripcion = descripcion;
 	}
 	
+	public Materia(int id, String descripcion){
+		this.descripcion = descripcion;
+		this.id = id;
+	}
+	
 	public Materia(){
 
 	}

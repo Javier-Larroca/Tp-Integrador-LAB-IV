@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import NegocioImp.AlumnoNegocio;
+import NegocioImp.NacionalidadNegocio;
+import NegocioImp.ProvinciaNegocio;
 import Dominio.Alumno;
 import Dominio.Nacionalidad;
 import Dominio.Provincia;
@@ -32,11 +34,24 @@ public class AlumnoServlet extends HttpServlet {
 		
 		AlumnoNegocio alumnoNegocio = new AlumnoNegocio();
 		ArrayList<Alumno> listaDeAlumnos = new ArrayList<Alumno>();
+		ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
+		ArrayList<Provincia> prov = new ArrayList<Provincia>();
+		ProvinciaNegocio provNegocio = new ProvinciaNegocio();
+		NacionalidadNegocio nacNegocio = new NacionalidadNegocio();
+		
+		if(request.getParameter("id") != null) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			alumnoNegocio.eliminar(id);
+		}
+		
 		try {
 			
 			listaDeAlumnos = alumnoNegocio.listar();
+			nac = nacNegocio.listar();
+			prov = provNegocio.listar();
 			request.setAttribute("listaAlumnos", listaDeAlumnos);
-			
+			request.setAttribute("nacionalidades", nac);
+			request.setAttribute("provincias", prov);
 			RequestDispatcher rd = request.getRequestDispatcher("AbmAlumnos.jsp");
 			rd.forward(request, response);
 			
@@ -49,9 +64,16 @@ public class AlumnoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		ArrayList<Alumno> listaDeAlumnos = new ArrayList<Alumno>();
+		ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
+		ArrayList<Provincia> prov = new ArrayList<Provincia>();
+		ProvinciaNegocio provNegocio = new ProvinciaNegocio();
+		NacionalidadNegocio nacNegocio = new NacionalidadNegocio();
+		AlumnoNegocio alumnoNegocio = new AlumnoNegocio();
+		
 		
 		if(request.getParameter("btnGuardar") != null) {
-			ArrayList<Alumno> listaDeAlumnos = new ArrayList<Alumno>();
+			
 			int id = Integer.parseInt(request.getParameter("Id"));
 			String mail = request.getParameter("Mail");
 			int legajo = Integer.parseInt(request.getParameter("Legajo"));
@@ -61,15 +83,19 @@ public class AlumnoServlet extends HttpServlet {
 			String fechaNacimiento = request.getParameter("FechaNacimiento");
 			String direccion = request.getParameter("Direccion");
 			String telefono = request.getParameter("Telefono");
+			
 			Nacionalidad nacionalidad = new Nacionalidad();
 			nacionalidad.setId(Integer.parseInt(request.getParameter("Nacionalidad")));
 			Provincia provincia = new Provincia();
+			System.out.println("nac" + request.getParameter("Nacionalidad"));
+			System.out.println("prov" + request.getParameter("Provincia"));
 			provincia.setId(Integer.parseInt(request.getParameter("Provincia")));
+			
 			Alumno nuevo = new Alumno(provincia, mail, legajo, dni, nombre, apellido, direccion,
 					fechaNacimiento, telefono, nacionalidad);
 			
 			try {
-				AlumnoNegocio alumnoNegocio = new AlumnoNegocio();
+				
 				if(id > 0) {
 					
 					alumnoNegocio.modificar(nuevo);
@@ -81,6 +107,10 @@ public class AlumnoServlet extends HttpServlet {
 				}
 				
 				listaDeAlumnos = alumnoNegocio.listar();
+				nac = nacNegocio.listar();
+				prov = provNegocio.listar();
+				request.setAttribute("provincias", prov);
+				request.setAttribute("nacionalidades", nac);
 				request.setAttribute("listaAlumnos", listaDeAlumnos);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("AbmAlumnos.jsp");

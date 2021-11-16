@@ -20,6 +20,7 @@
 </head>
 <body class="bg-primary">
 
+
 	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
 	
 	<jsp:include page="./HTML/InicioAdministrador.html"></jsp:include>

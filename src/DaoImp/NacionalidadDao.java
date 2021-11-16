@@ -31,20 +31,21 @@ public class NacionalidadDao implements INacionalidadDao {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		finally {
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return listaDeNacionalidades;
 	}
 	
 	private Nacionalidad parseNacionalidad(ResultSet resultSet) throws SQLException
 	{
+		int id = resultSet.getInt("Id");
 		String descripcion = resultSet.getString("Descripcion");
-		return new Nacionalidad(descripcion);
+		return new Nacionalidad(id,descripcion);
 	}
 }

@@ -18,13 +18,16 @@ public class AlumnoDao implements IAlumnoDao {
 		
 	}
 	
-	private static final String agregar = "insert into alumnos(Mail, Nombre, Apellido, Dni, Legajo, FechaNac, IdProvincia, IdNacionalidad, Telefono, Direccion, ) values(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+	private static final String agregar = "insert into alumnos(Mail, Nombre, Apellido, Dni, Legajo, FechaNac, IdProvincia, IdNacionalidad, Telefono, Direccion) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String eliminar = "UPDATE alumnos SET Estado = false WHERE Id = ?";
 	private static final String modificar = "UPDATE alumnos SET Nombre = ?, Apellido = ?, Mail = ?, Dni = ?, Legajo = ?,  FechaNac = ?, IdProvincia = ?, IdNacionalidad = ?, Telefono = ?, Direccion = ?, Estado = ? WHERE Id = ?";
-	private static final String listar = "SELECT * FROM alumnos";
+	private static final String listar = "SELECT * FROM alumnos where Estado = 1";
 	
 	@Override
 	public boolean agregar(Alumno alumno) {
+		
+		System.out.println(alumno.getNacionalidad().getId());
+		System.out.println(alumno.getProvincia().getId());
 		
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -43,6 +46,7 @@ public class AlumnoDao implements IAlumnoDao {
 			statement.setString(9, alumno.getTelefono());
 			statement.setString(10, alumno.getDireccion());
 			
+			
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
@@ -58,14 +62,15 @@ public class AlumnoDao implements IAlumnoDao {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-		}finally {
+		}
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		return agregaAlumno;
 	}
@@ -95,14 +100,15 @@ public class AlumnoDao implements IAlumnoDao {
 			{
 				e2.printStackTrace();
 			}
-		}finally {
+		}
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return eliminaAlumno;
 	}
 	
@@ -119,8 +125,8 @@ public class AlumnoDao implements IAlumnoDao {
 			statement.setString(4, alumno.getDni());
 			statement.setInt(5, alumno.getLegajo());
 			statement.setString(6, alumno.getFechaNacimiento());
-			//statement.setInt(7, alumno.getProvincia().getId());
-			//statement.setInt(8, alumno.getNacionalidad().getId());
+			statement.setInt(7, alumno.getProvincia().getId());
+			statement.setInt(8, alumno.getNacionalidad().getId());
 			statement.setString(9, alumno.getTelefono());
 			statement.setString(10, alumno.getDireccion());
 			statement.setBoolean(11, alumno.getEstado());
@@ -166,32 +172,33 @@ public class AlumnoDao implements IAlumnoDao {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		finally {
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return listaDeAlumnos;
 	}
 	
 	private Alumno parseAlumno(ResultSet resultSet) throws SQLException
 	{
-		int dni = resultSet.getInt("Dni");
+		int id = resultSet.getInt("Id");
+		String dni = resultSet.getString("Dni");
 		String nombre = resultSet.getString("Nombre");
 		String apellido = resultSet.getString("Apellido");
 		String mail = resultSet.getString("Mail");
 		String direccion = resultSet.getString("Direccion");
 		String nacimiento = resultSet.getString("FechaNac");
 		int legajo = resultSet.getInt("Legajo");
-		boolean estado = resultSet.getBoolean("Estado");
 		String telefono = resultSet.getString("Telefono");
 		Nacionalidad nac = new Nacionalidad( resultSet.getString("IdNacionalidad"));
 		Provincia prov = new Provincia( resultSet.getString("IdProvincia"));
-		return new Alumno(prov, mail, legajo, dni, nombre, apellido, direccion,
-				nacimiento, telefono, nac, estado);
+		
+		return new Alumno(id,prov, mail, legajo, dni, nombre, apellido, direccion,
+				nacimiento, telefono, nac);
 	}
 
 }

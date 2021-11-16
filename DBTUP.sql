@@ -132,7 +132,7 @@ create table usuarios
  
   create table alumnos
  (
-	Id int primary key not null,
+	Id int primary key not null AUTO_INCREMENT,
     Mail varchar(100) not null,
     Nombre varchar(64) not null,
     Apellido varchar(64) not null,
@@ -152,7 +152,7 @@ create table usuarios
  
    create table cursos
  (
-	Id int primary key not null,
+	Id int primary key not null AUTO_INCREMENT,
     IdMateria int not null,
     Semestre int not null,
     Anio int not null,

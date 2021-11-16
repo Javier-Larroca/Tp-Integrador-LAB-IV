@@ -10,6 +10,6 @@ public interface ICursoNegocio {
 	
 	public ArrayList<Curso> listar();
 	
-	public ArrayList<Curso> listadoPorDocente(int id)
+	public ArrayList<Curso> listadoPorDocente(int id);
  
 }

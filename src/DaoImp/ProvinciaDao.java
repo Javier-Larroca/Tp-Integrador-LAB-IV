@@ -31,20 +31,21 @@ public class ProvinciaDao implements IProvinciaDao {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		finally {
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return listaDeProvincias;
 	}
 	
-	private Pronvincia parseProvincia(ResultSet resultSet) throws SQLException
+	private Provincia parseProvincia(ResultSet resultSet) throws SQLException
 	{
+		int id = resultSet.getInt("Id");
 		String descripcion = resultSet.getString("Descripcion");
-		return new Provincia(descripcion);
+		return new Provincia(id,descripcion);
 	}
 }

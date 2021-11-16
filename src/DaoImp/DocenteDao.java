@@ -189,10 +189,10 @@ public class DocenteDao implements IDocenteDao{
 	private Docente parseDocente(ResultSet resultSet) throws SQLException
 	{
 		//int dni = resultSet.getInt("Dni");
-		//String nombre = resultSet.getString("Nombre");
-		//String apellido = resultSet.getString("Apellido");
+		String nombre = resultSet.getString("Nombre");
+		String apellido = resultSet.getString("Apellido");
 		//return new Docente(dni, nombre, apellido);
-		return new Docente();
+		return new Docente(nombre,apellido);
 	}
 
 }

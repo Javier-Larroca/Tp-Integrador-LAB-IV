@@ -21,6 +21,11 @@ public class Persona {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+	
+	public Persona(String nombre, String apellido) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+	}
 
 	public Persona(String mail, int legajo, String dni, String nombre, String apellido, String direccion,
 			String nacimiento, String telefono, Nacionalidad nacionalidad) {

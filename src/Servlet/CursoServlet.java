@@ -29,7 +29,7 @@ public class CursoServlet extends HttpServlet {
 		int semestre;
 		Materia materia = new Materia();
 		int anio;
-		Docente docente = new Docente();
+		//Docente docente = new Docente();
 		
 		int filas = 0;
 		
@@ -38,11 +38,11 @@ public class CursoServlet extends HttpServlet {
 			semestre = Integer.parseInt(request.getParameter("Semestre"));
 			materia.setId(Integer.parseInt(request.getParameter("Materia")));
 			anio = Integer.parseInt(request.getParameter("Anio"));
-			docente.setId( Integer.parseInt(request.getParameter("Docente")) );
+			//docente.setId(Integer.parseInt(request.getParameter("Docente")) );
 			
-			Curso curso = new Curso(semestre, materia, anio, docente);
+			//Curso curso = new Curso(semestre, materia, anio, docente);
 			
-			cursoNegocio.agregar(curso);
+			//cursoNegocio.agregar(curso);
 			
 			request.setAttribute("ListCurso", cursoNegocio.listar());
 			RequestDispatcher rd = request.getRequestDispatcher("/AbmCursos.jsp");

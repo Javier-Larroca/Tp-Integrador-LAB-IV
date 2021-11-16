@@ -8,3 +8,25 @@
     $("#table_id").DataTable();
   });
 </script>
+<script type="text/javascript">
+
+$('#table_id').click((e)=>{
+
+    
+    if(e.target.name === "eliminar")
+    {
+        console.log(e.target.dataset.id);
+        var id = e.target.dataset.id;
+        $(`#baja`).attr('href', 'AlumnoServlet?id=' + id);
+        $(`#baja`).attr('id',  id);
+    }
+
+});
+
+	function eliminar(id){
+		console.log(id)
+		var baja = document.getElementById('baja');
+		window.location.href = "AlumnoServlet?id="+id;
+	}
+
+</script>

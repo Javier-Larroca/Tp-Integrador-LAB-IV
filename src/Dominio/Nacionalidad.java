@@ -24,4 +24,9 @@ public class Nacionalidad {
 	public Nacionalidad(){
 
 	}
+	
+	public Nacionalidad(int id, String descripcion){
+		this.descripcion = descripcion;
+		this.id = id;
+	}
 }

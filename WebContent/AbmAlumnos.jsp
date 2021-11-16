@@ -1,6 +1,7 @@
-
-<%@page import="Dominio.Alumno"%>
-<%@page import="java.util.ArrayList"%>
+<%@ page import="Dominio.Provincia" %>
+<%@ page import="Dominio.Nacionalidad" %>
+<%@ page import="Dominio.Alumno" %>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,16 +30,80 @@ crossorigin="anonymous" />
 	<%
 
 	ArrayList<Alumno> lista = new ArrayList<Alumno>();
+	ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
+	ArrayList<Provincia> prov = new ArrayList<Provincia>();
 	if(request.getAttribute("listaAlumnos")!=null)
-		lista = (ArrayList<Alumno>)request.getAttribute("listaAlumnos");		
+		lista = (ArrayList<Alumno>)request.getAttribute("listaAlumnos");
+	
+	if(request.getAttribute("nacionalidades")!=null)
+		nac = (ArrayList<Nacionalidad>)request.getAttribute("nacionalidades");
+	
+	if(request.getAttribute("provincias")!=null)
+		prov = (ArrayList<Provincia>)request.getAttribute("provincias");
 
 	%>
 
 
 	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
 	
-	<jsp:include page="./HTML/AbmAlumnos.html"></jsp:include>
 	
+	<div class="container-fluid">
+	<h1 class="my-3">Alumnos</h1>
+	<div class="row">
+	
+		<div class="col-3">
+			<div class="card bg-secondary">
+				<div class="card-header">
+					<h3 class="card-title">Cargar Alumno</h3>
+				</div>
+				<div class="card-body">
+					<form action="AlumnoServlet" method="post">
+						<div class="form-row">
+							<div class="col">
+							<input type="hidden" name="Id" type="text" class="form-control my-2"
+									placeholder="Id" value="0"/>
+								<input name="Nombre" type="text" class="form-control my-2"
+									placeholder="Nombre" /> <input
+									name="DNI" type="text" class="form-control my-2"
+									placeholder="DNI" /> <input
+									name="Direccion" type="text" class="form-control my-2"
+									placeholder="Dirección" /> <input
+									name="Mail" type="email" class="form-control my-2"
+									placeholder="Mail" /> <select
+									class="custom-select" name="Nacionalidad" id="">
+									<%         for (Nacionalidad n : nac) { %>
+									<option value="<%= n.getId()%>"><%= n.getDescripcion()%></option>
+									<% }  %>
+								</select>
+							</div>
+							<div class="col">
+								<input name="Apellido" type="text" class="form-control my-2"
+									placeholder="Apellido" /> 
+									<input
+									name="FechaNacimiento" type="date" id="" class="form-control my-2" />
+									
+								<select class="custom-select" name="Provincia" id="">
+									<%         for (Provincia p : prov) { %>
+									<option value="<%= p.getId()%>"><%= p.getDescripcion() + p.getId()%></option>
+									<% }  %>
+									
+								</select> <input name="Telefono" type="text" class="form-control my-2"
+									placeholder="Teléfono" /> <input
+									name="Legajo" type="text" class="form-control my-2"
+									placeholder="Legajo" />
+							</div>
+						</div>
+				<div class="card-footer text-right">
+					<input type="submit" class="btn btn-primary" name="btnGuardar" value="Guardar" />
+				</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	
+			<div class="col">
+			<div class="card bg-secondary">
+				<div class="card-body">
 	<table id="table_id" class="display">
 						<thead class="text-center">
 							<tr>
@@ -56,7 +121,7 @@ crossorigin="anonymous" />
 								<th scope="col">Eliminar</th>
 							</tr>
 						</thead>
-						<tbody class="text-center">
+					<tbody class="text-center">
 						<%         for (Alumno item : lista) { %>
 							<tr id="<%=item.getId()%>">
 								<th scope="row"><%=item.getId() %></th>
@@ -65,8 +130,8 @@ crossorigin="anonymous" />
 								<td><%=item.getDni() %></td>
 								<td><%=item.getFechaNacimiento() %></td>
 								<td><%=item.getDireccion() %></td>
-								<td><%=item.getProvincia().getNombre() %></td>
-								<td><%=item.getNacionalidad().getNombre() %></td>
+								<td><%=item.getProvincia().getDescripcion() %></td>
+								<td><%=item.getNacionalidad().getDescripcion() %></td>
 								<td><%=item.getMail() %></td>
 								<td><%=item.getTelefono() %></td>
 								<td>
@@ -75,8 +140,8 @@ crossorigin="anonymous" />
 									</button>
 								</td>
 								<td>
-									<button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-										<i class="fas fa-trash-alt"></i>
+									<button class="btn btn-danger" data-id="<%=item.getId()%>" name="eliminar" data-toggle="modal" data-target="#exampleModal">
+										<i class="fas fa-trash-alt" data-id="<%=item.getId()%>" name="eliminar" ></i>
 									</button>
 								</td>
 							</tr>

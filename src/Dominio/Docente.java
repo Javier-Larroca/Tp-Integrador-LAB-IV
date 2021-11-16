@@ -5,9 +5,16 @@ public class Docente extends Persona{
 	private Localidad localidad;
 	private int tipoUsuario;
 
-public Docente() {
-	
-}
+
+	public Docente(String nombre, String apellido) {
+		super(nombre, apellido);
+	}
+
+public Docente(String mail, int legajo, String dni, String nombre, String apellido, String direccion,
+			String nacimiento, String telefono, Nacionalidad nacionalidad, Localidad localidad) {
+		super(mail, legajo, dni, nombre, apellido, direccion, nacimiento, telefono, nacionalidad);
+		this.localidad = new Localidad(localidad.getDescripcion());
+	}
 
 public Localidad getLocalidad() {
 	return this.localidad;
