@@ -31,20 +31,21 @@ public class MateriaDao implements IMateriaDao {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		finally {
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return listaDeMaterias;
 	}
 	
 	private Materia parseMateria(ResultSet resultSet) throws SQLException
 	{
+		int Id = resultSet.getInt("Id");
 		String descripcion = resultSet.getString("Descripcion");
-		return new Materia(descripcion);
+		return new Materia(Id,descripcion);
 	}
 }

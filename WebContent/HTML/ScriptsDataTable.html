@@ -9,10 +9,37 @@
   });
 </script>
 <script type="text/javascript">
+	function agregarAlumnos(){
+		$('#listaAlumno option:selected').each(function() {
+			console.log($(this).val());
+			console.log($(this).text());
+			$("#listaNueva").prepend("<option value="+$(this).val()+">"+$(this).text()+"</option>");
+		});
+
+	}
+	
+	function eliminarAlumnos(){
+		$('#listaNueva option:selected').each(function() {
+			$(this).remove();
+			
+		});
+	}
+	
+	function guardarLista(){
+		var id = 'lista=';
+		$('#listaNueva').children("option").each(function() {
+			id += '-' + $(this).val()
+		});
+		var idCurso = '&idCurso='+$( '#listaNueva' ).data('id');
+		console.log(idCurso)
+		window.location.href = "CursoServlet?"+id+idCurso;
+	}
+
+</script>
+<script type="text/javascript">
 
 $('#table_id').click((e)=>{
 
-    
     if(e.target.name === "eliminar")
     {
         console.log(e.target.dataset.id);
@@ -20,13 +47,83 @@ $('#table_id').click((e)=>{
         $(`#baja`).attr('href', 'AlumnoServlet?id=' + id);
         $(`#baja`).attr('id',  id);
     }
+    
+    if(e.target.name === "btnAlumno")
+    {
+    	var id = e.target.dataset.id;
+    	$( '#listaNueva' ).data( 'id', id );
+    	console.log(id)
+    }
+    
+    if(e.target.name === "borrar")
+    {
+        console.log(e.target.dataset.id);
+        var id = e.target.dataset.id;
+        $(`#baja`).attr('href', 'DocenteServlet?id=' + id);
+        $(`#baja`).attr('id',  id);
+    }
+    
+    if (e.target.name === "editar") {
+        const id = e.target.dataset.id;
+        const legajo = $($(`#${id}`).children("td")[0]).text();
+        const nombre = $($(`#${id}`).children("td")[1]).text();
+        const apellido = $($(`#${id}`).children("td")[2]).text();
+        const dni = $($(`#${id}`).children("td")[3]).text();
+        const fechaNacimiento = $($(`#${id}`).children("td")[4]).text();
+        const direccion = $($(`#${id}`).children("td")[5]).text();
+        const provincia = $($(`#${id}`).children("td")[6]).text();
+        const nacionalidad = $($(`#${id}`).children("td")[7]).text();
+        const email = $($(`#${id}`).children("td")[8]).text();
+        const telefono = $($(`#${id}`).children("td")[9]).text();
+        //Falta el legajo
+
+        //Ponerle ID a todos los input
+        $("#Id").val( id);
+        $("#Nombre").val( nombre);
+        $("#Apellido").val( apellido);
+        $("#DNI").val( dni);
+        $("#Direccion").val( direccion);
+        $("#Mail").val( email);
+        $("#Telefono").val( telefono);
+        $("#FechaNacimiento").val(fechaNacimiento);
+        $("#Legajo").val(legajo);
+        $("#btnGuardar").val('Guardar Cambios');
+        $("#Contrasena").css("display", "none");
+        
+        //Falta el legajo
+
+        //Seteamos nacionalidad y provincia
+        $("#Provincia option").each(function()
+        {
+            if($(this).text() == provincia)
+            {
+                $(this).attr("selected",true);
+                return;    
+            }
+        });
+
+        $("#Nacionalidad option").each(function()
+        {
+            if($(this).text() == nacionalidad)
+            {
+                $(this).attr("selected",true);
+                return;    
+            }
+        });
+
+
+ 
+       
+
+    }
 
 });
 
-	function eliminar(id){
-		console.log(id)
+	function eliminar(id,href){
 		var baja = document.getElementById('baja');
-		window.location.href = "AlumnoServlet?id="+id;
+		window.location.href = href;
 	}
+	
+
 
 </script>

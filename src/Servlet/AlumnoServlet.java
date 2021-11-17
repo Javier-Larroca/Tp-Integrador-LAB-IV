@@ -43,7 +43,6 @@ public class AlumnoServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			alumnoNegocio.eliminar(id);
 		}
-		
 		try {
 			
 			listaDeAlumnos = alumnoNegocio.listar();
@@ -71,6 +70,7 @@ public class AlumnoServlet extends HttpServlet {
 		NacionalidadNegocio nacNegocio = new NacionalidadNegocio();
 		AlumnoNegocio alumnoNegocio = new AlumnoNegocio();
 		
+
 		
 		if(request.getParameter("btnGuardar") != null) {
 			
@@ -87,8 +87,7 @@ public class AlumnoServlet extends HttpServlet {
 			Nacionalidad nacionalidad = new Nacionalidad();
 			nacionalidad.setId(Integer.parseInt(request.getParameter("Nacionalidad")));
 			Provincia provincia = new Provincia();
-			System.out.println("nac" + request.getParameter("Nacionalidad"));
-			System.out.println("prov" + request.getParameter("Provincia"));
+
 			provincia.setId(Integer.parseInt(request.getParameter("Provincia")));
 			
 			Alumno nuevo = new Alumno(provincia, mail, legajo, dni, nombre, apellido, direccion,
@@ -97,7 +96,7 @@ public class AlumnoServlet extends HttpServlet {
 			try {
 				
 				if(id > 0) {
-					
+					nuevo.setId(id);
 					alumnoNegocio.modificar(nuevo);
 					
 				}else {

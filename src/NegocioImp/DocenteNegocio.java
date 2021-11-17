@@ -1,5 +1,6 @@
 package NegocioImp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Dao.IDocenteDao;
@@ -37,7 +38,7 @@ public class DocenteNegocio implements IDocenteNegocio{
 	}
 
 	@Override
-	public List<Docente> listar() {
+	public ArrayList<Docente> listar() {
 		// TODO Auto-generated method stub
 		return datos.listar();
 	}

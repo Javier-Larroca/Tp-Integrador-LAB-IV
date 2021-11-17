@@ -1,5 +1,6 @@
 package Negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Dominio.Docente;
@@ -9,5 +10,5 @@ public interface IDocenteNegocio {
 	public boolean eliminar(int id);
 	public boolean modificar(Docente docente);
 	public boolean existe(String dni);
-	public List<Docente> listar();
+	public ArrayList<Docente> listar();
 }

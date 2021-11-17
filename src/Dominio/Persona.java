@@ -13,6 +13,10 @@ public class Persona {
 	private Nacionalidad nacionalidad;
 	private String telefono;
 	private boolean estado;
+	
+	public Persona() {
+		
+	}
 
 	public boolean getEstado() {
 		return estado;

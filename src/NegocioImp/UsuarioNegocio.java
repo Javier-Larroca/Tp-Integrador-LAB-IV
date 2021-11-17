@@ -2,6 +2,7 @@ package NegocioImp;
 
 import Dao.IUsuarioDao;
 import DaoImp.UsuarioDao;
+import Dominio.Docente;
 import Negocio.IUsuarioNegocio;
 
 public class UsuarioNegocio implements IUsuarioNegocio{
@@ -15,6 +16,12 @@ public class UsuarioNegocio implements IUsuarioNegocio{
 	@Override
 	public int obtenerTipoUsuario(int id) {
 		return datos.obtenerTipoUsuario(id);
+	}
+
+	@Override
+	public boolean agregarUsuario(Docente docente) {
+		// TODO Auto-generated method stub
+		return datos.agregar(docente);
 	}
 
 }

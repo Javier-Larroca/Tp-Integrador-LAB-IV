@@ -20,15 +20,11 @@ public class AlumnoDao implements IAlumnoDao {
 	
 	private static final String agregar = "insert into alumnos(Mail, Nombre, Apellido, Dni, Legajo, FechaNac, IdProvincia, IdNacionalidad, Telefono, Direccion) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String eliminar = "UPDATE alumnos SET Estado = false WHERE Id = ?";
-	private static final String modificar = "UPDATE alumnos SET Nombre = ?, Apellido = ?, Mail = ?, Dni = ?, Legajo = ?,  FechaNac = ?, IdProvincia = ?, IdNacionalidad = ?, Telefono = ?, Direccion = ?, Estado = ? WHERE Id = ?";
-	private static final String listar = "SELECT * FROM alumnos where Estado = 1";
+	private static final String modificar = "UPDATE alumnos SET Nombre = ?, Apellido = ?, Mail = ?, Dni = ?, Legajo = ?,  FechaNac = ?, IdProvincia = ?, IdNacionalidad = ?, Telefono = ?, Direccion = ? WHERE Id = ?";
+	private static final String listar = "Select * From Alumnos A inner join Nacionalidades N on A.IdNacionalidad = N.Id inner join Provincias P on A.IdProvincia = P.Id  where Estado = 1";
 	
 	@Override
 	public boolean agregar(Alumno alumno) {
-		
-		System.out.println(alumno.getNacionalidad().getId());
-		System.out.println(alumno.getProvincia().getId());
-		
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean agregaAlumno = false;
@@ -119,9 +115,9 @@ public class AlumnoDao implements IAlumnoDao {
 		boolean modificaAlumno = false;
 		try {
 			statement = conexion.prepareStatement(modificar);
-			statement.setString(2, alumno.getNombre());
-			statement.setString(3, alumno.getApellido());
-			statement.setString(1, alumno.getMail());
+			statement.setString(1, alumno.getNombre());
+			statement.setString(2, alumno.getApellido());
+			statement.setString(3, alumno.getMail());
 			statement.setString(4, alumno.getDni());
 			statement.setInt(5, alumno.getLegajo());
 			statement.setString(6, alumno.getFechaNacimiento());
@@ -129,7 +125,8 @@ public class AlumnoDao implements IAlumnoDao {
 			statement.setInt(8, alumno.getNacionalidad().getId());
 			statement.setString(9, alumno.getTelefono());
 			statement.setString(10, alumno.getDireccion());
-			statement.setBoolean(11, alumno.getEstado());
+			statement.setInt(11, alumno.getId());
+			
 			
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
@@ -143,14 +140,15 @@ public class AlumnoDao implements IAlumnoDao {
 			}catch(SQLException e2){
 				e2.printStackTrace();
 			}
-		}finally {
+		}
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		return modificaAlumno;
 	}
@@ -194,8 +192,8 @@ public class AlumnoDao implements IAlumnoDao {
 		String nacimiento = resultSet.getString("FechaNac");
 		int legajo = resultSet.getInt("Legajo");
 		String telefono = resultSet.getString("Telefono");
-		Nacionalidad nac = new Nacionalidad( resultSet.getString("IdNacionalidad"));
-		Provincia prov = new Provincia( resultSet.getString("IdProvincia"));
+		Nacionalidad nac = new Nacionalidad(resultSet.getInt("IdNacionalidad"),resultSet.getString(14));
+		Provincia prov = new Provincia(resultSet.getInt("IdProvincia"),resultSet.getString(16));
 		
 		return new Alumno(id,prov, mail, legajo, dni, nombre, apellido, direccion,
 				nacimiento, telefono, nac);

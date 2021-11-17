@@ -6,11 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Dao.IUsuarioDao;
+import Dominio.Docente;
 
 public class UsuarioDao implements IUsuarioDao{
-
+	
+	private static final String agregar = "INSERT INTO USUARIOS (Mail, Contrasena, Tipo) VALUES(?, ?, ?)";
 	private static final String obtenerTipoUsuario = "SELECT Tipo FROM USUARIOS WHERE ID = ?";
-	private static final String obtenerIdUsuario = "SELECT Id FROM USUARIOS WHERE MAIL = ? AND CONSTRASENA = ?";
+	private static final String obtenerIdUsuario = "SELECT Id FROM USUARIOS WHERE MAIL = ? AND CONTRASENA = ?";
 	
 	@Override
 	public int obtenerId(String mail, String password) {
@@ -73,4 +75,42 @@ public class UsuarioDao implements IUsuarioDao{
 		return tipoUsuario;
 	}
 
+	@Override
+	public boolean agregar(Docente usuario) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean usuarioAgregado = false;
+		try
+		{
+			statement = conexion.prepareStatement(agregar);
+			statement.setString(1, usuario.getMail());
+			statement.setString(2, usuario.getContrasenia());
+			statement.setInt(3, usuario.getTipoUsuario());
+			
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				usuarioAgregado = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		/** finally {
+			try {
+				conexion.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} **/
+		
+		return usuarioAgregado;
+	}
 }

@@ -102,7 +102,7 @@ create table materias
 create table usuarios
 (
 	Id int primary key not null AUTO_INCREMENT,
-    Mail varchar(100) not null,
+    Mail varchar(100) not null unique,
     Contrasena varchar(20) not null,
     Tipo int not null,
     FOREIGN KEY(Tipo) REFERENCES tiposUsuario(Id)
@@ -115,8 +115,8 @@ create table usuarios
 	Id int primary key not null,
     Nombre varchar(64) not null,
     Apellido varchar(64) not null,
-    Dni varchar(10) not null,
-    Legajo int not null,
+    Dni varchar(10) not null unique,
+    Legajo int not null unique,
     FechaNac varchar(10) not null,
     IdLocalidad int not null,
     IdNacionalidad int not null,
@@ -136,8 +136,8 @@ create table usuarios
     Mail varchar(100) not null,
     Nombre varchar(64) not null,
     Apellido varchar(64) not null,
-    Dni varchar(10) not null,
-    Legajo int not null,
+    Dni varchar(10) not null unique,
+    Legajo int not null unique,
     FechaNac varchar(10) not null,
     IdProvincia int not null,
     IdNacionalidad int not null,

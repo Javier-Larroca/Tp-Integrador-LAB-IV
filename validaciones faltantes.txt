@@ -1,0 +1,2 @@
+validar DNI y Legajo
+al editar poner readonly legajo y dni

@@ -31,20 +31,21 @@ public class LocalidadDao implements ILocalidadDao {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		finally {
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return listaDeLocalidades;
 	}
 	
 	private Localidad parseLocalidad(ResultSet resultSet) throws SQLException
 	{
+		int id = resultSet.getInt("Id");
 		String descripcion = resultSet.getString("Descripcion");
-		return new Localidad(descripcion);
+		return new Localidad(id,descripcion);
 	}
 }

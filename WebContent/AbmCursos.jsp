@@ -1,4 +1,7 @@
 <%@ page import="Dominio.Curso"%>
+<%@ page import="Dominio.Alumno"%>
+<%@ page import="Dominio.Materia"%>
+<%@ page import="Dominio.Docente"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -29,14 +32,65 @@ crossorigin="anonymous" />
 	<%
 
 	ArrayList<Curso> lista = new ArrayList<Curso>();
-	if(request.getAttribute("ListCurso")!=null)
-		lista = (ArrayList<Curso>)request.getAttribute("ListCurso");		
+	ArrayList<Materia> listaMateria = new ArrayList<Materia>();
+	ArrayList<Docente> listaDocente = new ArrayList<Docente>();
+	ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+	
+	if(request.getAttribute("Alumnos")!=null)
+		listaAlumnos = (ArrayList<Alumno>)request.getAttribute("Alumnos");
+	
+	if(request.getAttribute("Cursos")!=null)
+		lista = (ArrayList<Curso>)request.getAttribute("Cursos");
+	
+	if(request.getAttribute("Materias")!=null)
+		listaMateria = (ArrayList<Materia>)request.getAttribute("Materias");
+	
+	if(request.getAttribute("Docentes")!=null)
+		listaDocente = (ArrayList<Docente>)request.getAttribute("Docentes");
 
 	%>
 
 	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
 
-	<jsp:include page="./HTML/AbmCursos.html"></jsp:include>
+	
+<div class="container-fluid">
+	<h1 class="my-3">Cursos</h1>
+	<div class="row">
+		<div class="col-3">
+			<div class="card bg-secondary">
+				<div class="card-header">
+					<h3 class="card-title">Cargar Curso</h3>
+				</div>
+				<div class="card-body">
+					<form action="CursoServlet" method="post">
+						<div class="form">
+							<select class="custom-select my-2" name="Materia" id="Materia">
+								<%         for (Materia m : listaMateria) { %>
+									<option value="<%= m.getId()%>"><%= m.getDescripcion()%></option>
+									<% }  %>
+							</select> <select class="custom-select" name="Semestre" id="Semestre">
+								<option value="1">1er Semestre</option>
+								<option value="2">2do Semestre</option>
+							</select> <input name="Anio" id="Anio" type="text" class="form-control my-2"
+								placeholder="Año" /> <select class="custom-select"
+								name="Docente" id="Docente">
+									<%         for (Docente d : listaDocente) { %>
+									<option value="<%= d.getId()%>"><%= d.getLegajo() + " " + d.getNombre() + " " + d.getApellido()%></option>
+									<% }  %>
+							</select>
+							
+						</div>
+						<div class="card-footer text-right">
+							<input type="submit" class="btn btn-primary" name="btnGuardar" value="Guardar"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card bg-secondary">
+				<div class="card-body">
+					
 	
 	<table id="table_id" class="display">
 						<thead class="text-center">
@@ -57,7 +111,7 @@ crossorigin="anonymous" />
 								<td><%= item.getSemestre() == 1 ? "1er Semestre" : "2do Semestre" %></td>
 								<td><%= item.getAnio() %></td>
 								<td><%= item.getDocente().getNombre() %></td>
-								<td> <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-user-plus"></i> </button> </td>
+								<td> <button class="btn btn-info fas fa-user-plus" data-toggle="modal" name="btnAlumno"  data-id="<%= item.getId() %>" data-target="#exampleModal"> </button> </td>
 	
 							</tr>
 						<% } %>
@@ -71,7 +125,55 @@ crossorigin="anonymous" />
 	
 	<jsp:include page="./HTML/Footer.html"></jsp:include>
 	
-	<jsp:include page="./HTML/ModalAlumnos.html"></jsp:include>
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Listado de alumnos</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+        	<h5>Alumnos de la carrera</h5>
+            <select id="listaAlumno" multiple style="height: 300px;" class="form-control" id="exampleFormControlSelect2">
+				<% for (Alumno A : listaAlumnos) { %>
+				<option value="<%= A.getId()%>"><%= A.getLegajo() + " " + A.getNombre() + " " + A.getApellido()%></option>
+				<% }  %>
+            </select>
+        </div>
+
+        <div class="col-2 align-self-center">
+            <div class="row my-2">
+                <div class="btn btn-primary btn-block" onclick="agregarAlumnos()">Agregar</div>
+
+            </div>
+            <div class="row my-2">
+                <div class="btn btn-primary btn-block" onclick="eliminarAlumnos()">Borrar</div>
+
+            </div>
+        </div>
+
+
+        <div class="col-5">
+        <h5>Alumnos del curso</h5>
+            <select id="listaNueva" multiple style="height: 300px;" class="form-control">
+				
+            </select>
+        </div>
+        
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardarLista()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
 	<jsp:include page="./HTML/ScriptsDataTable.html"></jsp:include>
 

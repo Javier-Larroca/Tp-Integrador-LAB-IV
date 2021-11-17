@@ -28,6 +28,19 @@ public class CursoNegocio implements ICursoNegocio {
 		return datos.listadoPorDocente(id);
 	}
 	
-	
+	public boolean agregarAlumnos(String lista, int idCurso) {
+		
+		String[] numeros = lista.split("-");
+		CursoDao cursoDao = new CursoDao();
+		
+		for(int x = 0; x < numeros.length; x++) {
+			try {
+				cursoDao.agregarAlumnos(idCurso, Integer.parseInt(numeros[x]));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		return true;
+	}
 	
 }

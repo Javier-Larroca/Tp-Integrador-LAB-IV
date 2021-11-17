@@ -18,7 +18,7 @@ public class DocenteDao implements IDocenteDao{
 	private static final String eliminar = "UPDATE DOCENTES SET ESTADO = 0 WHERE ID = ?";
 	private static final String modificar = "UPDATE DOCENTES SET NOMBRE = ?, APELLIDO = ?, DNI = ?, LEGAJO = ?, FechaNac = ?, "
 											+ "IDLOCALIDAD = ?, IDNACIONALIDAD = ?, TELEFONO = ?, DIRECCION = ? WHERE ID = ?";
-	private static final String listar = "SELECT DOC.*, U.MAIL, LOC.DESCRIPCION DESCLOCALIDAD, NAC.DESCRIPCION DESCNACIONALIDAD "
+	private static final String listar = "SELECT DOC.*, U.MAIL, U.CONTRASENA, LOC.DESCRIPCION DESCLOCALIDAD, NAC.DESCRIPCION DESCNACIONALIDAD "
 										+ "FROM DOCENTES DOC INNER JOIN USUARIOS U ON U.ID = DOC.ID "
 										+ "INNER JOIN LOCALIDADES LOC ON LOC.ID = DOC.IDLOCALIDAD "
 										+ "INNER JOIN NACIONALIDADES NAC ON NAC.ID = DOC.IDNACIONALIDAD WHERE ESTADO = 1";
@@ -179,7 +179,7 @@ public class DocenteDao implements IDocenteDao{
 	}
 
 	@Override
-	public List<Docente> listar() {
+	public ArrayList<Docente> listar() {
 		PreparedStatement statement;
 		ResultSet resultado;
 		ArrayList<Docente> listaDocentes = new ArrayList<Docente>();
@@ -195,14 +195,14 @@ public class DocenteDao implements IDocenteDao{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		finally {
+		/*finally {
 			try {
 				conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return listaDocentes;
 	}
 	
@@ -233,6 +233,7 @@ public class DocenteDao implements IDocenteDao{
 		String nombre = resultSet.getString("Nombre");
 		String apellido = resultSet.getString("Apellido");
 		String dni = resultSet.getString("Dni");
+		String contrasenia = resultSet.getString("Contrasena");
 		int legajo = resultSet.getInt("Legajo");
 		String fechaNac = resultSet.getString("FechaNac");
 		Localidad loc = new Localidad(resultSet.getInt("IdLocalidad"), resultSet.getString("DescLocalidad"));
@@ -240,7 +241,7 @@ public class DocenteDao implements IDocenteDao{
 		String telefono = resultSet.getString("Telefono");
 		String direccion = resultSet.getString("Direccion");
 		String mail = resultSet.getString("Mail");
-		return new Docente(mail, legajo, dni, nombre, apellido, direccion, fechaNac, telefono, nac, loc);
+		return new Docente(id,mail, legajo, dni, nombre, apellido, direccion, fechaNac, telefono, nac, loc,contrasenia);
 	}
 
 }

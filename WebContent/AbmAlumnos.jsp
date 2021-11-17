@@ -60,41 +60,41 @@ crossorigin="anonymous" />
 					<form action="AlumnoServlet" method="post">
 						<div class="form-row">
 							<div class="col">
-							<input type="hidden" name="Id" type="text" class="form-control my-2"
+							<input type="hidden" id="Id" name="Id" type="text" class="form-control my-2"
 									placeholder="Id" value="0"/>
-								<input name="Nombre" type="text" class="form-control my-2"
+								<input name="Nombre" id="Nombre" type="text" class="form-control my-2"
 									placeholder="Nombre" /> <input
-									name="DNI" type="text" class="form-control my-2"
+									name="DNI" id="DNI" type="text" class="form-control my-2"
 									placeholder="DNI" /> <input
-									name="Direccion" type="text" class="form-control my-2"
+									name="Direccion" id="Direccion" type="text" class="form-control my-2"
 									placeholder="Dirección" /> <input
 									name="Mail" type="email" class="form-control my-2"
-									placeholder="Mail" /> <select
-									class="custom-select" name="Nacionalidad" id="">
+									placeholder="Mail" id="Mail" /> <select
+									class="custom-select" name="Nacionalidad" id="Nacionalidad">
 									<%         for (Nacionalidad n : nac) { %>
 									<option value="<%= n.getId()%>"><%= n.getDescripcion()%></option>
 									<% }  %>
 								</select>
 							</div>
 							<div class="col">
-								<input name="Apellido" type="text" class="form-control my-2"
+								<input name="Apellido" id="Apellido" type="text" class="form-control my-2"
 									placeholder="Apellido" /> 
 									<input
-									name="FechaNacimiento" type="date" id="" class="form-control my-2" />
+									name="FechaNacimiento" type="date" id="FechaNacimiento" class="form-control my-2" />
 									
-								<select class="custom-select" name="Provincia" id="">
+								<select class="custom-select" name="Provincia" id="Provincia">
 									<%         for (Provincia p : prov) { %>
-									<option value="<%= p.getId()%>"><%= p.getDescripcion() + p.getId()%></option>
+									<option value="<%= p.getId()%>"><%= p.getDescripcion()%></option>
 									<% }  %>
 									
-								</select> <input name="Telefono" type="text" class="form-control my-2"
+								</select> <input name="Telefono" id="Telefono" type="text" class="form-control my-2"
 									placeholder="Teléfono" /> <input
-									name="Legajo" type="text" class="form-control my-2"
+									name="Legajo" id="Legajo" type="text" class="form-control my-2"
 									placeholder="Legajo" />
 							</div>
 						</div>
 				<div class="card-footer text-right">
-					<input type="submit" class="btn btn-primary" name="btnGuardar" value="Guardar" />
+					<input type="submit" class="btn btn-primary" id="btnGuardar" name="btnGuardar" value="Guardar" />
 				</div>
 					</form>
 				</div>
@@ -107,7 +107,7 @@ crossorigin="anonymous" />
 	<table id="table_id" class="display">
 						<thead class="text-center">
 							<tr>
-								<th scope="col">#</th>
+								<th scope="col">Legajo</th>
 								<th scope="col">Nombre</th>
 								<th scope="col">Apellido</th>
 								<th scope="col">DNI</th>
@@ -123,8 +123,8 @@ crossorigin="anonymous" />
 						</thead>
 					<tbody class="text-center">
 						<%         for (Alumno item : lista) { %>
-							<tr id="<%=item.getId()%>">
-								<th scope="row"><%=item.getId() %></th>
+							<tr  id="<%=item.getId()%>">
+								<td scope="row"><%=item.getLegajo() %></td>
 								<td><%=item.getNombre() %></td>
 								<td><%=item.getApellido() %></td>
 								<td><%=item.getDni() %></td>
@@ -135,13 +135,13 @@ crossorigin="anonymous" />
 								<td><%=item.getMail() %></td>
 								<td><%=item.getTelefono() %></td>
 								<td>
-									<button id="btnEditar" class="btn btn-success">
-										<i class="fas fa-edit"></i>
+									<button id="btnEditar" name="editar" data-id="<%=item.getId()%>" class="btn btn-success fas fa-edit">
+
 									</button>
 								</td>
 								<td>
-									<button class="btn btn-danger" data-id="<%=item.getId()%>" name="eliminar" data-toggle="modal" data-target="#exampleModal">
-										<i class="fas fa-trash-alt" data-id="<%=item.getId()%>" name="eliminar" ></i>
+									<button class="btn btn-danger fas fa-trash-alt" data-id="<%=item.getId()%>" name="eliminar" data-toggle="modal" data-target="#exampleModal">
+				
 									</button>
 								</td>
 							</tr>

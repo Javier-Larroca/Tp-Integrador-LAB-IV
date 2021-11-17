@@ -1,5 +1,6 @@
 package Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import Dominio.Docente;
 
@@ -9,5 +10,5 @@ public interface IDocenteDao {
 	public boolean modificar(Docente docente);
 	public boolean existe(String dni);
 	public Docente obtenerDocente(int id);
-	public List<Docente> listar();
+	public ArrayList<Docente> listar();
 }

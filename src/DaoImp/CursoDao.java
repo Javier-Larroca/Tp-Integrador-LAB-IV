@@ -7,6 +7,7 @@ import Dao.ICursoDao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,73 +17,66 @@ import Dominio.Docente;
 import Dominio.Materia;
 
 public class CursoDao implements ICursoDao {
-	private String host = "jdbc:mysql://localhost:3306/";
-	private String user = "root";
-	private String pass = "root";
-	private String dbName = "DBTUP";
 	
-	public CursoDao ()
-	{
-		
-	}
+	public String agregar = "Insert into cursos(IdMateria, Semestre, Anio, IdDocente) values (?, ?, ?, ?)";
+	public String listar = "select c.id, c.Semestre, c.Anio, m.id, m.descripcion, Nombre, Apellido from cursos c " + 
+			" inner join materias m on m.id = c.IdMateria " + 
+			" inner join docentes d on d.id = c.IdDocente ";
+	public String listarxDocente = "select c.id, c.Semestre, c.Anio, m.id, m.descripcion, Nombre, Apellido from cursos c " + 
+			" inner join materias m on m.id = c.IdMateria " + 
+			" inner join docentes d on d.id = c.IdDocente "+ 
+			" where d.id = c.IdDocente ";
+	public String registrarAlumnos = "Insert into AlumnosxCurso(IdCurso,IdAlumno) values(?,?)";
 	
 	public boolean agregar(Curso curso)
 	{
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean cursoAgregado = false;
 		
-		boolean filas = false;
-		Connection cn = null;
 		try
 		{
-			cn = DriverManager.getConnection(host+dbName, user,pass);
-			CallableStatement cst = cn.prepareCall("Insert into cursos(IdMateria, Semestre, Anio, IdDocente) values ('?, ?, ?, ?')");
+			statement = conexion.prepareStatement(agregar);
 			
-			cst.setInt(1, curso.getMateria().getId());
-			cst.setInt(2, curso.getSemestre());
-			cst.setInt(3, curso.getAnio());
-			cst.setInt(4, curso.getDocente().getId());
+			statement.setInt(1, curso.getMateria().getId());
+			statement.setInt(2, curso.getSemestre());
+			statement.setInt(3, curso.getAnio());
+			statement.setInt(4, curso.getDocente().getId());
 			
-			filas = cst.execute();
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				cursoAgregado = true;
+			}
 			
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		finally {
+		/*finally {
 			try {
 				cn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
-		return filas;
+		return cursoAgregado;
 	}  
 	
 	public ArrayList<Curso> listar()
 	{
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		String query = "select c.id, c.Semestre, c.Anio, m.id, m.descripcion, Nombre, Apellido from cursos c " + 
-						" inner join materias m on m.id = c.IdMateria " + 
-						" inner join docentes d on d.id = c.IdDocente ";
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		ResultSet rs;
 		
 		ArrayList<Curso> lista = new ArrayList<Curso>();
-		Connection conn = null;
+
 		try{
-			conn = DriverManager.getConnection(host + dbName, user, pass);
-			Statement st = conn.createStatement();
-			
-			ResultSet rs = st.executeQuery(query);
+
+			statement = conexion.prepareStatement(listar);
+			rs = statement.executeQuery();
 			
 			while(rs.next()){
 				
@@ -97,37 +91,30 @@ public class CursoDao implements ICursoDao {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-		}finally {
+		}
+		/*finally {
 			try {
 				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		return lista;
 	}
 	
 	public ArrayList<Curso> listadoPorDocente(int id)
 	{
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		String query = "select c.id, c.Semestre, c.Anio, m.id, m.descripcion, Nombre, Apellido from cursos c " + 
-						" inner join materias m on m.id = c.IdMateria " + 
-						" inner join docentes d on d.id = c.IdDocente "+ 
-						" where d.id = c.IdDocente ";
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		ResultSet rs;
 		
 		ArrayList<Curso> lista = new ArrayList<Curso>();
-		Connection conn = null;
+
 		try{
-			conn = DriverManager.getConnection(host + dbName, user, pass);
-			Statement st = conn.createStatement();
-			
-			ResultSet rs = st.executeQuery(query);
+
+			statement = conexion.prepareStatement(listarxDocente);
+			rs = statement.executeQuery();
 			
 			while(rs.next()){
 				
@@ -142,15 +129,53 @@ public class CursoDao implements ICursoDao {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-		}finally {
+		}
+		/*finally {
 			try {
 				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		return lista;
 	}
 	
+	public boolean agregarAlumnos(int idCurso, int idAlumno) {
+		
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean cursoAgregado = false;
+		
+		try
+		{
+			statement = conexion.prepareStatement(registrarAlumnos);
+			
+			statement.setInt(1, idCurso);
+			statement.setInt(2, idAlumno);
+			
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				cursoAgregado = true;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		/*finally {
+			try {
+				cn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}*/
+		
+		return cursoAgregado;
+		
+
+		
+	}
 }
