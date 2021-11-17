@@ -139,7 +139,7 @@ crossorigin="anonymous" />
     <div class="row">
         <div class="col-5">
         	<h5>Alumnos de la carrera</h5>
-            <select id="listaAlumno" multiple style="height: 300px;" class="form-control" id="exampleFormControlSelect2">
+            <select id="listaAlumno" multiple style="height: 300px;" class="form-control">
 				<% for (Alumno A : listaAlumnos) { %>
 				<option value="<%= A.getId()%>"><%= A.getLegajo() + " " + A.getNombre() + " " + A.getApellido()%></option>
 				<% }  %>

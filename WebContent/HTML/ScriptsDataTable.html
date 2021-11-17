@@ -11,9 +11,8 @@
 <script type="text/javascript">
 	function agregarAlumnos(){
 		$('#listaAlumno option:selected').each(function() {
-			console.log($(this).val());
-			console.log($(this).text());
 			$("#listaNueva").prepend("<option value="+$(this).val()+">"+$(this).text()+"</option>");
+			$(this).remove();
 		});
 
 	}
@@ -21,6 +20,7 @@
 	function eliminarAlumnos(){
 		$('#listaNueva option:selected').each(function() {
 			$(this).remove();
+			$("#listaAlumno").prepend("<option value="+$(this).val()+">"+$(this).text()+"</option>");
 			
 		});
 	}
@@ -31,7 +31,6 @@
 			id += '-' + $(this).val()
 		});
 		var idCurso = '&idCurso='+$( '#listaNueva' ).data('id');
-		console.log(idCurso)
 		window.location.href = "CursoServlet?"+id+idCurso;
 	}
 
@@ -52,7 +51,14 @@ $('#table_id').click((e)=>{
     {
     	var id = e.target.dataset.id;
     	$( '#listaNueva' ).data( 'id', id );
-    	console.log(id)
+    	
+    	$('#listaNueva option').each(function() {
+			$(this).remove();
+		});
+    	
+    	///Aca deberia ir al buscar los alumnos y agregarlos en el Alumnos por curso
+        ///Pero cuando regrese tendria que regresar tendri que regresar con el modal abierto
+        
     }
     
     if(e.target.name === "borrar")
