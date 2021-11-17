@@ -12,9 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Dominio.AlumnoxCurso;
 import Dominio.Curso;
 import Dominio.Docente;
 import Dominio.Materia;
+import jdk.nashorn.internal.runtime.Undefined;
 
 public class CursoDao implements ICursoDao {
 	
@@ -27,9 +29,12 @@ public class CursoDao implements ICursoDao {
 			" inner join docentes d on d.id = c.IdDocente "+ 
 			" where d.id = c.IdDocente ";
 	public String registrarAlumnos = "Insert into AlumnosxCurso(IdCurso,IdAlumno) values(?,?)";
+	public String listarAlumnosxCurso = "Select AC.IdCurso, AC.IdAlumno, AC.Parcial1, AC.Parcial2, AC.Recuperatorio1, AC.Recuperatorio2, A.Nombre, A.Apellido, A.Legajo From alumnosxcurso AC inner join Alumnos A on AC.IdAlumno = A.Id WHERE AC.IdCurso = ?";
+	public String alumnoxCursoExite = "Select * From AlumnosxCurso WHERE IdAlumno = ? AND IdCurso = ?";
+	public String eliminarAlumnoCurso = "DELETE FROM AlumnosxCurso WHERE IdCurso = ? AND IdAlumno = ?";
 	
-	public boolean agregar(Curso curso)
-	{
+		public boolean agregar(Curso curso)
+		{
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean cursoAgregado = false;
@@ -178,4 +183,114 @@ public class CursoDao implements ICursoDao {
 
 		
 	}
+
+	public ArrayList<AlumnoxCurso> listarAlumnosxCurso(int idCurso)
+	{
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		ResultSet rs;
+		
+		ArrayList<AlumnoxCurso> lista = new ArrayList<AlumnoxCurso>();
+
+		try{
+
+			statement = conexion.prepareStatement(listarAlumnosxCurso);
+			statement.setInt(1, idCurso);
+			rs = statement.executeQuery();
+			
+			while(rs.next()){
+				
+				AlumnoxCurso alumnoXcurso = new AlumnoxCurso();
+				alumnoXcurso.setIdCurso(rs.getInt("AC.IdCurso"));
+				alumnoXcurso.setIdAlumno(rs.getInt("AC.IdAlumno"));
+				alumnoXcurso.setParcial1(rs.getInt("AC.Parcial1"));
+				alumnoXcurso.setParcial2(rs.getInt("AC.Parcial2"));
+				alumnoXcurso.setRecuperatorio1(rs.getInt("AC.Recuperatorio1")); 
+				alumnoXcurso.setRecuperatorio2(rs.getInt("AC.Recuperatorio2"));
+				alumnoXcurso.setNombre(rs.getString("A.Nombre"));
+				alumnoXcurso.setApellido(rs.getString("A.Apellido"));
+				alumnoXcurso.setLegajo(rs.getString("A.Legajo"));
+				
+				lista.add(alumnoXcurso);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		/*finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}*/
+		
+		return lista;
+	}
+
+	public boolean existeAlumnoxCurso(int idCurso, int idAlumno) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		ResultSet rs;
+		
+		boolean existe = false;
+
+		try{
+
+			statement = conexion.prepareStatement(alumnoxCursoExite);
+			statement.setInt(1, idAlumno);
+			statement.setInt(2, idCurso);
+			rs = statement.executeQuery();
+			
+			while(rs.next()){
+				existe = true;
+				return existe;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		/*finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}*/
+		return existe;
+	}
+
+	public boolean eliminarAlumnoCurso(int idCurso, int idAlumno) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean alumnoEliminado = false;
+		
+		try
+		{
+			statement = conexion.prepareStatement(eliminarAlumnoCurso);
+			
+			statement.setInt(1, idCurso);
+			statement.setInt(2, idAlumno);
+
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				alumnoEliminado = true;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		/*finally {
+			try {
+				cn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}*/
+		
+		return alumnoEliminado;
+	}
+
+
 }

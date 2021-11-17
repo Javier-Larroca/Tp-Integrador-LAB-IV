@@ -55,10 +55,9 @@ $('#table_id').click((e)=>{
     	$('#listaNueva option').each(function() {
 			$(this).remove();
 		});
-    	
     	///Aca deberia ir al buscar los alumnos y agregarlos en el Alumnos por curso
         ///Pero cuando regrese tendria que regresar tendri que regresar con el modal abierto
-        
+    	window.location.href = "CursoServlet?id="+id;
     }
     
     if(e.target.name === "borrar")

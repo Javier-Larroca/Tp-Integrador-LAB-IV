@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dominio.Alumno;
+import Dominio.AlumnoxCurso;
 import Dominio.Curso;
 import Dominio.Docente;
 import Dominio.Materia;
@@ -43,11 +44,18 @@ public class CursoServlet extends HttpServlet {
 			
 			int idCurso = 0;
 			if(request.getParameter("idCurso") != null) {
-				System.out.println(request.getParameter("idCurso"));
 				idCurso = Integer.parseInt(request.getParameter("idCurso"));
 			}
 			cursoNegocio.agregarAlumnos(lista, idCurso);
 			
+		}
+		
+		ArrayList<AlumnoxCurso> listaAlumnoxCurso = new ArrayList<AlumnoxCurso>();
+		if(request.getParameter("id") != null) {
+			int idListar = Integer.parseInt(request.getParameter("id"));
+			listaAlumnoxCurso = cursoNegocio.listarAlumnosxCurso(idListar);
+			request.setAttribute("AlumnosxCurso", listaAlumnoxCurso);
+			request.setAttribute("idCurso", idListar);
 		}
 		
 		
@@ -59,6 +67,7 @@ public class CursoServlet extends HttpServlet {
 		AlumnoNegocio alumnoNegocio = new AlumnoNegocio();
 		ArrayList<Alumno> listaAlumno = new ArrayList<Alumno>();
 		
+		
 			try {
 			
 			listaDocente = docenteNegocio.listar();
@@ -69,6 +78,7 @@ public class CursoServlet extends HttpServlet {
 			request.setAttribute("Materias", listaMateria);
 			request.setAttribute("Cursos", cursoNegocio.listar());
 			request.setAttribute("Docentes", listaDocente);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("AbmCursos.jsp");
 			rd.forward(request, response);
 			} catch (Exception e) {

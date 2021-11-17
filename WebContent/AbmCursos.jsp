@@ -1,4 +1,5 @@
 <%@ page import="Dominio.Curso"%>
+<%@ page import="Dominio.AlumnoxCurso"%>
 <%@ page import="Dominio.Alumno"%>
 <%@ page import="Dominio.Materia"%>
 <%@ page import="Dominio.Docente"%>
@@ -29,12 +30,16 @@ crossorigin="anonymous" />
 </head>
 <body class="bg-primary">
 
+
+
 	<%
 
 	ArrayList<Curso> lista = new ArrayList<Curso>();
 	ArrayList<Materia> listaMateria = new ArrayList<Materia>();
 	ArrayList<Docente> listaDocente = new ArrayList<Docente>();
 	ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+	ArrayList<AlumnoxCurso> listaAlumnoxCurso = new ArrayList<AlumnoxCurso>();
+	
 	
 	if(request.getAttribute("Alumnos")!=null)
 		listaAlumnos = (ArrayList<Alumno>)request.getAttribute("Alumnos");
@@ -47,8 +52,17 @@ crossorigin="anonymous" />
 	
 	if(request.getAttribute("Docentes")!=null)
 		listaDocente = (ArrayList<Docente>)request.getAttribute("Docentes");
+	
+	if(request.getAttribute("AlumnosxCurso")!=null)
+		listaAlumnoxCurso = (ArrayList<AlumnoxCurso>)request.getAttribute("AlumnosxCurso");
+	
+	int idCurso = 0;
+	if(request.getAttribute("idCurso")!=null)
+		idCurso = ((int)request.getAttribute("idCurso"));
 
 	%>
+	
+	<p hidden id="cursoInvisible" name="<%= idCurso%>"><%= idCurso%></p>
 
 	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
 
@@ -161,7 +175,9 @@ crossorigin="anonymous" />
         <div class="col-5">
         <h5>Alumnos del curso</h5>
             <select id="listaNueva" multiple style="height: 300px;" class="form-control">
-				
+				<% for (AlumnoxCurso AC : listaAlumnoxCurso) { %>
+				<option value="<%= AC.getIdAlumno()%>"><%= AC.getLegajo() + " " + AC.getNombre() + " " + AC.getApellido()%></option>
+				<% }  %>
             </select>
         </div>
         
@@ -176,6 +192,32 @@ crossorigin="anonymous" />
 </div>
 	
 	<jsp:include page="./HTML/ScriptsDataTable.html"></jsp:include>
+
+	<script type="text/javascript">
+	$(document).ready(function(){ 
+    		const id = <%= idCurso%>;
+    		if(Number(id) != 0){
+        	$( '#listaNueva' ).data( 'id', id );
+        	$("#exampleModal").modal("show");
+        	cargarAlumnos();
+    }
+	});
+	function cargarAlumnos(){
+		$('#listaNueva option').each(function() {
+			var e = Number($(this).val());
+			console.log('E = '+e)
+			$('#listaAlumno option').each(function(){
+				var a = Number($(this).val());
+					console.log('E=' + e + ' A=' +a )
+				if(e === a){
+					$(this).remove();
+				}
+			});
+			
+		});
+
+	}
+	</script>
 
 </body>
 </html>

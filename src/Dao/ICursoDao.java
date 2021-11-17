@@ -2,6 +2,7 @@ package Dao;
 
 import java.util.ArrayList;
 
+import Dominio.AlumnoxCurso;
 import Dominio.Curso;
 
 public interface ICursoDao {
@@ -11,5 +12,7 @@ public interface ICursoDao {
 	public ArrayList<Curso> listar();
 	
 	public ArrayList<Curso> listadoPorDocente(int id);
+	
+	public ArrayList<AlumnoxCurso> listarAlumnosxCurso(int idCurso);
 
 }
