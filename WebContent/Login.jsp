@@ -15,6 +15,8 @@
 </head>
 <body>
 
+<a href="CursosDocenteServlet">SERVLET</a>
+
 <div class="container-fluid bg-primary text-light">
 			<div class="vh-100 row justify-content-center align-items-center">
 				<div class="col-md-4">

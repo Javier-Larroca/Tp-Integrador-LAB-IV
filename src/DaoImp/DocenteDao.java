@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Dao.IDocenteDao;
+import Dominio.Curso;
 import Dominio.Docente;
 import Dominio.Localidad;
+import Dominio.Materia;
 import Dominio.Nacionalidad;
 
 public class DocenteDao implements IDocenteDao{
@@ -23,6 +25,7 @@ public class DocenteDao implements IDocenteDao{
 										+ "INNER JOIN LOCALIDADES LOC ON LOC.ID = DOC.IDLOCALIDAD "
 										+ "INNER JOIN NACIONALIDADES NAC ON NAC.ID = DOC.IDNACIONALIDAD WHERE ESTADO = 1";
 	private static final String existeDocente = "SELECT ID FROM DOCENTES WHERE DNI = ?";
+	private static final String listaCursosDocente = "Select * FROM Cursos C inner join Materias M on C.IdMateria = M.Id WHERE IdDocente = ?";
 	
 	@Override
 	public boolean agregar(Docente docente) {
@@ -244,4 +247,45 @@ public class DocenteDao implements IDocenteDao{
 		return new Docente(id,mail, legajo, dni, nombre, apellido, direccion, fechaNac, telefono, nac, loc,contrasenia);
 	}
 
+	@Override
+	public ArrayList<Curso> listaCursoDocente(int id) {
+		PreparedStatement statement;
+		ResultSet resultado;
+		ArrayList<Curso> listaCursosxDocentes = new ArrayList<Curso>();
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		
+		try 
+		{
+			statement = conexion.prepareStatement(listaCursosDocente);
+			statement.setInt(1, id);
+			resultado = statement.executeQuery();
+			while (resultado.next()) {
+				listaCursosxDocentes.add(parseCurso(resultado));
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		/*finally {
+			try {
+				conexion.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/
+		return listaCursosxDocentes;
+	}
+
+	public Curso parseCurso(ResultSet resultSet) throws SQLException {
+		int id = resultSet.getInt("Id");
+		Materia materia = new Materia();
+		materia.setId(resultSet.getInt("IdMateria"));
+		materia.setDescripcion(resultSet.getString("descripcion"));
+		int semestre = resultSet.getInt("Semestre");
+		int anio = resultSet.getInt("Anio");
+		Docente docente = new Docente();
+		docente.setId(resultSet.getInt("IdDocente"));
+		return new Curso(id,semestre,materia,anio,docente);
+	
+	}
 }

@@ -1,3 +1,5 @@
+<%@ page import="Dominio.Curso"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,14 +24,57 @@ crossorigin="anonymous" />
 <title>UTN-TUP</title>
 </head>
 <body class="bg-primary">
+
+	<% 
+		ArrayList<Curso> cursosXdocente = new ArrayList<Curso>();
+		if(request.getAttribute("listadoCursos")!=null)
+			cursosXdocente = (ArrayList<Curso>)request.getAttribute("listadoCursos");
+	%>
 	
 	<jsp:include page="./HTML/NavDocente.html"></jsp:include>
 	
-	<jsp:include page="./HTML/InicioDocente.html"></jsp:include>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <h1 class="my-3">Cursos de Docente</h1>
+        <div class="card bg-secondary">
+          <div class="card-body">
+            <table id="table_id" class="display">
+              <thead class="text-center">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Materia</th>
+                  <th scope="col">Año</th>
+                  <th scope="col">Semestre</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+              <% for(Curso item: cursosXdocente) { %>
+                <tr class="text-center">
+                  <th scope="row"><%= item.getId() %></th>
+                  <td><%= item.getMateria().getDescripcion() %></td>
+                  <td><%= item.getAnio() %></td>
+                  <td><%= item.getSemestre() %></td>
+                  <td><a href="AbmNotas.jsp">Ver detalle</a></td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 	
 	<jsp:include page="./HTML/Footer.html"></jsp:include>
 	
 	<jsp:include page="./HTML/ScriptsDataTable.html"></jsp:include>
+	
+
 	
 </body>
 </html>

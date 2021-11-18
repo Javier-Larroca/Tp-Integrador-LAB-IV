@@ -31,7 +31,6 @@ public class CursoNegocio implements ICursoNegocio {
 	
 	public boolean agregarAlumnos(String lista, int idCurso) {
 		
-		System.out.println("lista" + lista);
 		String[] numeros = lista.split("-");
 		CursoDao cursoDao = new CursoDao();
 		ArrayList<AlumnoxCurso> listaBase = new ArrayList<AlumnoxCurso>();
@@ -60,8 +59,6 @@ public class CursoNegocio implements ICursoNegocio {
 				}
 				
 				if(bandera) {
-					System.out.println("Curso " + item.getIdCurso());
-					System.out.println("Alumno " + item.getIdAlumno());
 					cursoDao.eliminarAlumnoCurso(item.getIdCurso(), item.getIdAlumno());
 				}
 			}

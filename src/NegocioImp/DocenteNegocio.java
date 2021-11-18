@@ -5,6 +5,7 @@ import java.util.List;
 
 import Dao.IDocenteDao;
 import DaoImp.DocenteDao;
+import Dominio.Curso;
 import Dominio.Docente;
 import Negocio.IDocenteNegocio;
 
@@ -41,6 +42,12 @@ public class DocenteNegocio implements IDocenteNegocio{
 	public ArrayList<Docente> listar() {
 		// TODO Auto-generated method stub
 		return datos.listar();
+	}
+
+	@Override
+	public ArrayList<Curso> listaCursoDocente(int id) {
+		// TODO Auto-generated method stub
+		return datos.listaCursoDocente(id);
 	}
 
 	

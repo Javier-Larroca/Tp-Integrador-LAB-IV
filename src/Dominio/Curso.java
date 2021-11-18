@@ -32,6 +32,14 @@ public class Curso {
 		this.docente = docente;
 	}
 	
+	public Curso(int id, int semestre, Materia materia, int anio, Docente docente) {
+		this.semestre = semestre;
+		this.materia = materia;
+		this.anio = anio;
+		this.docente = docente;
+		this.id = id;
+	}
+	
 	public int getId() {
 		return id;
 	}
