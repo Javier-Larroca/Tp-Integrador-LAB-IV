@@ -14,5 +14,7 @@ public interface ICursoDao {
 	public ArrayList<Curso> listadoPorDocente(int id);
 	
 	public ArrayList<AlumnoxCurso> listarAlumnosxCurso(int idCurso);
+	
+	public boolean cargarNotas(AlumnoxCurso modificado);
 
 }

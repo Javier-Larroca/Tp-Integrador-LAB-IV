@@ -26,6 +26,10 @@ crossorigin="anonymous" />
 <body class="bg-primary">
 
 	<% 
+		int docente = 0;
+		if(request.getAttribute("docente")!=null)
+			docente = (int)request.getAttribute("docente");
+	
 		ArrayList<Curso> cursosXdocente = new ArrayList<Curso>();
 		if(request.getAttribute("listadoCursos")!=null)
 			cursosXdocente = (ArrayList<Curso>)request.getAttribute("listadoCursos");
@@ -57,7 +61,7 @@ crossorigin="anonymous" />
                   <td><%= item.getMateria().getDescripcion() %></td>
                   <td><%= item.getAnio() %></td>
                   <td><%= item.getSemestre() %></td>
-                  <td><a href="AbmNotas.jsp">Ver detalle</a></td>
+                  <td><a href="NotasServlet?id=<%= item.getId() %>&docente=<%= docente %>">Ver detalle</a></td>
                 </tr>
                 <% } %>
               </tbody>

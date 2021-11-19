@@ -30,12 +30,14 @@ public class CursosDocenteServlet extends HttpServlet {
 		
 		ArrayList<Curso> cursosXdocente = new ArrayList<Curso>();
 		DocenteNegocio cursoNegocio = new DocenteNegocio();
-		int idDocente = 7;
+		int idDocente = 2;
+		
 		
 		try {
 			
 			cursosXdocente = cursoNegocio.listaCursoDocente(idDocente);
 			request.setAttribute("listadoCursos", cursosXdocente);
+			request.setAttribute("docente", idDocente);
 			RequestDispatcher rd = request.getRequestDispatcher("InicioDocente.jsp");
 			rd.forward(request, response);
 			

@@ -71,5 +71,11 @@ public class CursoNegocio implements ICursoNegocio {
 		// TODO Auto-generated method stub
 		return datos.listarAlumnosxCurso(idCurso);
 	}
+
+	@Override
+	public boolean cargarNotas(AlumnoxCurso modificado) {
+		// TODO Auto-generated method stub
+		return datos.cargarNotas(modificado);
+	}
 	
 }

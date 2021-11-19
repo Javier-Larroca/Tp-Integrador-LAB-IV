@@ -15,7 +15,14 @@ public class AlumnoxCurso {
 	private String Nombre;
 	private String Apellido;
 	private String Legajo;
+	private boolean Estado;
 	
+	public boolean isEstado() {
+		return Estado;
+	}
+	public void setEstado(boolean estado) {
+		Estado = estado;
+	}
 	public String getNombre() {
 		return Nombre;
 	}

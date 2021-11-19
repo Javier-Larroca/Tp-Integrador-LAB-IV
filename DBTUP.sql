@@ -171,6 +171,7 @@ create table usuarios
     Parcial2 int null,
     Recuperatorio1 int null,
     Recuperatorio2 int null,
+    Estado bit null,
     
     FOREIGN KEY(IdCurso) REFERENCES cursos(Id),
     FOREIGN KEY(IdAlumno) REFERENCES alumnos(Id),

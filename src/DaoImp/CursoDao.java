@@ -29,11 +29,13 @@ public class CursoDao implements ICursoDao {
 			" inner join docentes d on d.id = c.IdDocente "+ 
 			" where d.id = c.IdDocente ";
 	public String registrarAlumnos = "Insert into AlumnosxCurso(IdCurso,IdAlumno) values(?,?)";
-	public String listarAlumnosxCurso = "Select AC.IdCurso, AC.IdAlumno, AC.Parcial1, AC.Parcial2, AC.Recuperatorio1, AC.Recuperatorio2, A.Nombre, A.Apellido, A.Legajo From alumnosxcurso AC inner join Alumnos A on AC.IdAlumno = A.Id WHERE AC.IdCurso = ?";
+	public String listarAlumnosxCurso = "Select AC.IdCurso, AC.IdAlumno, AC.Parcial1, AC.Parcial2, AC.Recuperatorio1, AC.Recuperatorio2, AC.Estado,A.Nombre, A.Apellido, A.Legajo From alumnosxcurso AC inner join Alumnos A on AC.IdAlumno = A.Id WHERE AC.IdCurso = ?";
 	public String alumnoxCursoExite = "Select * From AlumnosxCurso WHERE IdAlumno = ? AND IdCurso = ?";
 	public String eliminarAlumnoCurso = "DELETE FROM AlumnosxCurso WHERE IdCurso = ? AND IdAlumno = ?";
+	public String cargarNota = "UPDATE AlumnosxCurso SET Parcial1 = ?, Parcial2 = ?, Recuperatorio1 = ?, Recuperatorio2 = ?, Estado = ? WHERE IdAlumno = ? AND IdCurso = ? ";
 	
-		public boolean agregar(Curso curso)
+	
+	public boolean agregar(Curso curso)
 		{
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -125,7 +127,7 @@ public class CursoDao implements ICursoDao {
 				
 				Curso curso = new Curso();
 				curso.setId(rs.getInt("c.id"));
-				curso.setAnio(rs.getInt("c.Semestre"));
+				curso.setSemestre(rs.getInt("c.Semestre"));
 				curso.setAnio(rs.getInt("c.Anio"));
 				curso.setMateria(new Materia(rs.getInt("m.id"), rs.getString("m.descripcion"))); //Constructor de Materias
 				curso.setDocente(new Docente(rs.getString("Nombre"), rs.getString("Apellido"))); //Constructor de Docente
@@ -210,6 +212,7 @@ public class CursoDao implements ICursoDao {
 				alumnoXcurso.setNombre(rs.getString("A.Nombre"));
 				alumnoXcurso.setApellido(rs.getString("A.Apellido"));
 				alumnoXcurso.setLegajo(rs.getString("A.Legajo"));
+				alumnoXcurso.setEstado(rs.getBoolean("AC.Estado"));
 				
 				lista.add(alumnoXcurso);
 			}
@@ -290,6 +293,48 @@ public class CursoDao implements ICursoDao {
 		}*/
 		
 		return alumnoEliminado;
+	}
+
+	@Override
+	public boolean cargarNotas(AlumnoxCurso modificado) {
+		// TODO Auto-generated method stub
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean notaCargada = false;
+		
+		try
+		{
+			statement = conexion.prepareStatement(cargarNota);
+			
+			statement.setInt(1, modificado.getParcial1());
+			statement.setInt(2, modificado.getParcial2());
+			statement.setInt(3, modificado.getRecuperatorio1());
+			statement.setInt(4, modificado.getRecuperatorio2());
+			statement.setBoolean(5, modificado.isEstado());
+			statement.setInt(6, modificado.getIdAlumno());
+			statement.setInt(7, modificado.getIdCurso());
+
+			
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				notaCargada = true;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		/*finally {
+			try {
+				cn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}*/
+		
+		return notaCargada;
 	}
 
 
