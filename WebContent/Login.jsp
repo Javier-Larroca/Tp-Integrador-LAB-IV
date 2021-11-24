@@ -37,11 +37,12 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<form action="" method="" class="needs-validation" novalidate>
+							<form action="UsuarioServlet" method="post" class="needs-validation" novalidate>
 								<div class="form-group">
 									<label for="validationEmail">Email</label>
 									<input
 										type="email"
+										name="mailIngresado"
 										class="form-control"
 										id="validationEmail"
 										required
@@ -51,12 +52,13 @@
 									<label for="validationPassword">Password</label>
 									<input
 										type="password"
+										name="passIngresada"
 										class="form-control"
 										id="validationPassword"
 										required
 									/>
 								</div>
-								<button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+								<button type="submit" name="btnIniciar" class="btn btn-primary">Iniciar Sesión</button>
 							</form>
 						</div>
 					</div>

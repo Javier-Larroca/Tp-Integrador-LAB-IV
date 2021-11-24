@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dominio.Curso;
+import Dominio.Docente;
 import NegocioImp.CursoNegocio;
 import NegocioImp.DocenteNegocio;
 
@@ -30,7 +31,7 @@ public class CursosDocenteServlet extends HttpServlet {
 		
 		ArrayList<Curso> cursosXdocente = new ArrayList<Curso>();
 		DocenteNegocio cursoNegocio = new DocenteNegocio();
-		int idDocente = 2;
+		int idDocente = ((Docente)request.getAttribute("Docente")).getId();
 		
 		
 		try {

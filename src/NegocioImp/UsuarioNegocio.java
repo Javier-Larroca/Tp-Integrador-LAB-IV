@@ -2,6 +2,7 @@ package NegocioImp;
 
 import Dao.IUsuarioDao;
 import DaoImp.UsuarioDao;
+import Dominio.Administrador;
 import Dominio.Docente;
 import Negocio.IUsuarioNegocio;
 
@@ -22,6 +23,18 @@ public class UsuarioNegocio implements IUsuarioNegocio{
 	public boolean agregarUsuario(Docente docente) {
 		// TODO Auto-generated method stub
 		return datos.agregar(docente);
+	}
+
+	@Override
+	public Administrador obtenerAdministrador(int id) {
+		// TODO Auto-generated method stub
+		return datos.obtenerAdministrador(id);
+	}
+
+	@Override
+	public Docente obtenerDocente(int id) {
+		// TODO Auto-generated method stub
+		return datos.obtenerDocente(id);
 	}
 
 }
