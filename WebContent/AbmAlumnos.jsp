@@ -1,5 +1,6 @@
 <%@ page import="Dominio.Provincia" %>
 <%@ page import="Dominio.Nacionalidad" %>
+<%@ page import="Dominio.Administrador"%>
 <%@ page import="Dominio.Alumno" %>
 <%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -28,7 +29,7 @@ crossorigin="anonymous" />
 <body class="bg-primary">
 
 	<%
-
+	
 	ArrayList<Alumno> lista = new ArrayList<Alumno>();
 	ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
 	ArrayList<Provincia> prov = new ArrayList<Provincia>();
@@ -44,7 +45,57 @@ crossorigin="anonymous" />
 	%>
 
 
-	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
+	<%
+		int usuario = 0;
+		Administrador AdministradorLogueado = new Administrador();
+		if(request.getSession().getAttribute("usuario") != null){
+			usuario = ((int)request.getSession().getAttribute("usuario"));
+		}
+	
+		if(usuario == 2 || usuario == 0){
+			RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
+			rd.forward(request, response);
+		}else{
+			if(request.getSession().getAttribute("nombreusuario") != null){
+				AdministradorLogueado = ((Administrador)request.getSession().getAttribute("nombreusuario"));
+			}
+		}
+		
+	%>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="InicioAdministrador.jsp">UTN-TUP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-flex justify-content-start" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="CursoServlet">Cursos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="DocenteServlet">Docentes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="AlumnoServlet">Alumnos</a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse d-flex justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active disabled" style="cursor: pointer !important;" href="#"><%=AdministradorLogueado.getMail() %></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="Login.jsp">Cerras Sesión</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 	
 	
 	<div class="container-fluid">

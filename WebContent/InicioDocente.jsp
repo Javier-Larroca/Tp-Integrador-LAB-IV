@@ -1,4 +1,5 @@
 <%@ page import="Dominio.Curso"%>
+<%@ page import="Dominio.Docente"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -26,6 +27,24 @@ crossorigin="anonymous" />
 <body class="bg-primary">
 
 	<% 
+	
+	
+		int usuario = 0;
+		Docente docenteUsuario = new Docente();
+		if(request.getSession().getAttribute("usuario") != null){
+			usuario = ((int)request.getSession().getAttribute("usuario"));
+		}
+	
+		if(usuario == 1 || usuario == 0){
+			RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
+			rd.forward(request, response);
+		}else{
+			if(request.getSession().getAttribute("nombreusuario") != null){
+				docenteUsuario = ((Docente)request.getSession().getAttribute("nombreusuario"));
+			}
+		}
+	
+
 		int docente = 0;
 		if(request.getAttribute("docente")!=null)
 			docente = (int)request.getAttribute("docente");
@@ -35,13 +54,43 @@ crossorigin="anonymous" />
 			cursosXdocente = (ArrayList<Curso>)request.getAttribute("listadoCursos");
 	%>
 	
-	<jsp:include page="./HTML/NavDocente.html"></jsp:include>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="InicioDocente.jsp">UTN-TUP</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    class="collapse navbar-collapse d-flex justify-content-end"
+    id="navbarSupportedContent"
+  >
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link disabled" style="cursor: pointer !important" href="#"
+          ><%=docenteUsuario.getMail() %></a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="Login.jsp">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 	
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
       <div class="container">
-        <h1 class="my-3">Cursos de Docente</h1>
+        <h1 class="my-3">Cursos de <%=docenteUsuario.getApellido() %>, <%=docenteUsuario.getNombre() %></h1>
         <div class="card bg-secondary">
           <div class="card-body">
             <table id="table_id" class="display">

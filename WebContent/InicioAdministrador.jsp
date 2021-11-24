@@ -1,3 +1,4 @@
+<%@ page import="Dominio.Administrador"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,8 +21,57 @@
 </head>
 <body class="bg-primary">
 
+	<%
+		int usuario = 0;
+		Administrador AdministradorLogueado = new Administrador();
+		if(request.getSession().getAttribute("usuario") != null){
+			usuario = ((int)request.getSession().getAttribute("usuario"));
+		}
+	
+		if(usuario == 2 || usuario == 0){
+			RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
+			rd.forward(request, response);
+		}else{
+			if(request.getSession().getAttribute("nombreusuario") != null){
+				AdministradorLogueado = ((Administrador)request.getSession().getAttribute("nombreusuario"));
+			}
+		}
+		
+	%>
 
-	<jsp:include page="./HTML/NavAdmin.html"></jsp:include>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="InicioAdministrador.jsp">UTN-TUP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-flex justify-content-start" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="CursoServlet">Cursos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="DocenteServlet">Docentes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="AlumnoServlet">Alumnos</a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse d-flex justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active disabled" style="cursor: pointer !important;" href="#"><%=AdministradorLogueado.getMail() %></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="Login.jsp">Cerras Sesión</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 	
 	<jsp:include page="./HTML/InicioAdministrador.html"></jsp:include>
 	

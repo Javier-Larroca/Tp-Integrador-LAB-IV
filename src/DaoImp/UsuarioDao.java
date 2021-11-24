@@ -21,7 +21,7 @@ public class UsuarioDao implements IUsuarioDao{
 	private static final String obtenerDocente = "SELECT DOC.*, U.MAIL, U.CONTRASENA, LOC.DESCRIPCION DESCLOCALIDAD, NAC.DESCRIPCION DESCNACIONALIDAD "
 												+ "FROM DOCENTES DOC INNER JOIN USUARIOS U ON U.ID = DOC.ID "
 												+ "INNER JOIN LOCALIDADES LOC ON LOC.ID = DOC.IDLOCALIDAD "
-												+ "INNER JOIN NACIONALIDADES NAC ON NAC.ID = DOC.IDNACIONALIDAD WHERE ID = ? AND ESTADO = 1";
+												+ "INNER JOIN NACIONALIDADES NAC ON NAC.ID = DOC.IDNACIONALIDAD WHERE DOC.ID = ? AND DOC.ESTADO = 1";
 	
 	@Override
 	public int obtenerId(String mail, String password) {
@@ -29,9 +29,6 @@ public class UsuarioDao implements IUsuarioDao{
 		ResultSet resultado;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		int id = 0;
-		System.out.println(id);
-		System.out.println(mail);
-		System.out.println(password);
 		try 
 		{
 			statement = conexion.prepareStatement(obtenerIdUsuario);

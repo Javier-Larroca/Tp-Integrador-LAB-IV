@@ -15,19 +15,36 @@
 </head>
 <body>
 
-<a href="CursosDocenteServlet">SERVLET</a>
-
 <div class="container-fluid bg-primary text-light">
 			<div class="vh-100 row justify-content-center align-items-center">
 				<div class="col-md-4">
 					<div class="card bg-dark p-3">
 						<div class="card-body">
 							<h4 class="card-title text-center">Sistema Gestión Educativa</h4>
-							<div
+							
+							
+								<% if((request.getAttribute("usuarioInvalido")) != null){ %>
+								<div
 								class="alert alert-warning alert-dismissible fade show"
 								role="alert"
 							>
-								<strong>Alerta de algo!</strong> mensaje mas chico
+								<strong>¡Error!</strong> Usuario inhabilitado
+								<button
+									type="button"
+									class="close"
+									data-dismiss="alert"
+									aria-label="Close"
+								>
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<%} %>
+								<% if((request.getAttribute("usuarioNoExiste")) != null){ %>
+								<div
+								class="alert alert-warning alert-dismissible fade show"
+								role="alert"
+							>
+								<strong>¡Error!</strong> Usuario o contraseña incorrectos
 								<button
 									type="button"
 									class="close"
@@ -37,6 +54,7 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
+								<%} %>
 							<form action="UsuarioServlet" method="post" class="needs-validation" novalidate>
 								<div class="form-group">
 									<label for="validationEmail">Email</label>

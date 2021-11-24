@@ -1,5 +1,6 @@
 <%@ page import="Dominio.AlumnoxCurso"%>
 <%@ page import="Dominio.Curso"%>
+<%@ page import="Dominio.Docente"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -30,6 +31,22 @@
 <body class="bg-primary">
 
 	<%
+	
+		int usuario = 0;
+		Docente docenteUsuario = new Docente();
+		if(request.getSession().getAttribute("usuario") != null){
+			usuario = ((int)request.getSession().getAttribute("usuario"));
+		}
+	
+		if(usuario == 1 || usuario == 0){
+			RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
+			rd.forward(request, response);
+		}else{
+			if(request.getSession().getAttribute("nombreusuario") != null){
+				docenteUsuario = ((Docente)request.getSession().getAttribute("nombreusuario"));
+			}
+		}
+	
 		ArrayList<AlumnoxCurso> lista = new ArrayList<AlumnoxCurso>();
 		if (request.getAttribute("alumnos") != null)
 			lista = (ArrayList<AlumnoxCurso>) request.getAttribute("alumnos");
@@ -39,7 +56,36 @@
 			curso = (Curso) request.getAttribute("curso");
 	%>
 
-	<jsp:include page="./HTML/NavDocente.html"></jsp:include>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="InicioDocente.jsp">UTN-TUP</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    class="collapse navbar-collapse d-flex justify-content-end"
+    id="navbarSupportedContent"
+  >
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link disabled" style="cursor: pointer !important" href="#"
+          ><%=docenteUsuario.getMail() %></a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="Login.jsp">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 	<div class="container-fluid">
 		<div class="row justify-content-center">

@@ -62,6 +62,8 @@ public class UsuarioServlet extends HttpServlet {
 							RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 							rd.forward(request, response);
 						}
+						request.getSession().setAttribute("usuario", 1);
+						request.getSession().setAttribute("nombreusuario", administrador);
 						request.setAttribute("Administrador", administrador);
 						RequestDispatcher rd = request.getRequestDispatcher("InicioAdministrador.jsp");
 						rd.forward(request, response);
@@ -76,6 +78,8 @@ public class UsuarioServlet extends HttpServlet {
 							RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 							rd.forward(request, response);
 						}
+						request.getSession().setAttribute("usuario", 2);
+						request.getSession().setAttribute("nombreusuario", docente);
 						request.setAttribute("Docente", docente);
 						RequestDispatcher rd = request.getRequestDispatcher("CursosDocenteServlet");
 						rd.forward(request, response);
