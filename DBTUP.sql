@@ -108,7 +108,28 @@ create table usuarios
     FOREIGN KEY(Tipo) REFERENCES tiposUsuario(Id)
 );
 
- insert into usuarios (Mail,Contrasena,Tipo) values ('admin@admin.com','admin',1);
+/* Administradores */
+insert into usuarios (Mail,Contrasena,Tipo) values ('admin@admin.com','admin',1);
+insert into usuarios (Mail,Contrasena,Tipo) values ('root@root.com','root',1);
+/* Docentes */
+insert into usuarios (Mail,Contrasena,Tipo) values ('Laura@Radetich.com','LauraRadetich',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Agustina@Gonzalez.com','AgustinaGonzalez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Antonella@Rodriguez.com','AntonellaRodriguez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Martina@Fernandez.com','MartinaFernandez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Joaquín@Lopez.com','JoaquínLopez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Leonardo@Diaz.com','LeonardoDiaz',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Luciano@Martinez.com','LucianoMartinez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Cecilia@Pérez.com','CeciliaPérez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Delfina@Romero.com','DelfinaRomero',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Florencia@Sánchez.com','FlorenciaSánchez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Olivia@García.com','OliviaGarcía',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Belén@Sosa.com','BelénSosa',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Valentino@Torres.com','ValentinoTorres',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Martín@Alvarez.com','MartínAlvarez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Carolina@Glere.com','CarolinaGlere',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Esteban@Quito.com','Esteban Quito',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Suana@Alvarez.com','SusanaAlvarez',2);
+insert into usuarios (Mail,Contrasena,Tipo) values ('Abrahan@Ramírez.com','AbrahanRamírez',2);
  
  create table docentes
  (
@@ -129,6 +150,27 @@ create table usuarios
     FOREIGN KEY(Id) REFERENCES usuarios(Id)
     
  );
+ 
+insert into docentes (id,Nombre,Apellido,Dni,Legajo,FechaNac,IdLocalidad,IdNacionalidad,Telefono,Direccion) 
+values
+(3, 'Laura','Radetich', '12391', '1239', '10-02-1989', 2, 1, '0303456', 'Corrientes 456'),
+(4, 'Agustina','Gonzalez', '45682', '4568', '09-01-1984', 1, 2, '01145682', 'Rawson 123'),
+(5, 'Antonella','Rodriguez', '78973', '7897', '22-03-1994', 3, 5, '01178973', 'Boedo 789'),
+(6, 'Martina','Fernandez', '74164', '7416', '15-04-1996', 5, 4, '01174164', 'Alvear 987'),
+(7, 'Joaquín','Lopez', '85255', '8525', '7-05-1980', 5, 15, '01185255', 'San Martin 963'),
+(8, 'Leonardo','Diaz', '96346', '9634', '13-06-1987', 6, 13, '01196346', 'Flesia 7410'),
+(9, 'ALuciano','Martinez', '36937', '3693', '25-07-1989', 7, 12, '01136937', 'Belgrano 852'),
+(10, 'Cecilia','Pérez', '25828', '2582', '27-08-1990', 8, 11, '01125828', 'Moreno 654'),
+(11, 'Delfina','Romero', '14719', '1471', '28-09-1984', 9, 10, '01114719', 'Garay 486'),
+(12, 'Florencia','Sánchez', '32191', '3219', '19-10-1993', 10, 9, '01132191', 'Sarmiento 153'),
+(13, 'Olivia','García', '65482', '6548', '02-11-1992', 11, 8, '01165482', 'Suarez 759'),
+(14, 'Belén','Sosa', '98773', '9877', '04-12-1979', 12, 7, '01198773', 'Medina 953'),
+(15, 'Valentino','Torres', '95164', '9516', '22-01-1984', 13, 6, '01195164', 'Francia 751'),
+(16, 'Martín','Alvarez', '75355', '7535', '17-02-1987', 14, 5, '01175355', 'Rivadavia 684'),
+(17, 'Carolina','Glere', '62446', '6244', '21-03-1995', 15, 4, '01162446', 'Avellaneda 351'),
+(18, 'Esteban','Quito', '75937', '7593', '17-04-1997', 1, 2, '01175937', 'Colon 957'),
+(19, 'Suana','Alvarez', '15328', '1532', '04-05-1982', 2, 3, '01115328', 'España 1532'),
+(20, 'Abrahan','Ramírez', '75119', '7511', '19-12-1983', 3, 1, '01175119', 'Roca 1593');
  
   create table alumnos
  (
