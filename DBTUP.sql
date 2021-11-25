@@ -192,6 +192,22 @@ values
     
  );
  
+ INSERT INTO ALUMNOS VALUES(1, 'elmerr.vasquez@gmail.com', 'Elmer', 'Vasquez', '38.749.844', 16854975, '23-07-1995', 1, 1, '1168987456', 'Superi 3356', 1);
+ INSERT INTO ALUMNOS VALUES(2, 'benito.diaz@gmail.com', 'Benito', 'Diaz', '41.759.884', 65432132, '15-06-1995', 2, 3, '1189654321', 'Nuñez 6589', 1);
+ INSERT INTO ALUMNOS VALUES(3, 'david.gonzales@gmail.com', 'David', 'Gonzales', '37.569.852', 66552285, '08-10-1993', 3, 1, '1164895212', 'Larralde 3583', 1);
+ INSERT INTO ALUMNOS VALUES(4, 'noelia.marquez@gmail.com', 'Noelia', 'Marquez', '37.885.997', 22134681, '15-02-1997', 4, 5, '1179854631', 'Juncal 2259', 1);
+ INSERT INTO ALUMNOS VALUES(5, 'mariana.martinez@gmail.com', 'Mariana', 'Martinez', '41.665.321', 3215648, '15-06-1997', 5, 4, '1146879211', 'Honduras 1135', 1);
+ INSERT INTO ALUMNOS VALUES(6, 'diego.pugliese@gmail.com', 'Diego', 'Pugliese', '38.998.265', 32154685, '22-10-1995', 6, 2, '1154226879', 'Arribeños 4652', 1);
+ INSERT INTO ALUMNOS VALUES(7, 'noelia.yrigaray@gmail.com', 'Noelia', 'Yrigaray', '35.648.222', 54569872, '22-11-1990', 7, 8, '1133115549', 'San martin 2256', 1);
+ INSERT INTO ALUMNOS VALUES(8, 'damian.ferreira@gmail.com', 'Damian', 'Ferreira', '36.221.879', 21694487, '30-12-1991', 8, 9, '1143568279', 'Paraná 3399', 1);
+ INSERT INTO ALUMNOS VALUES(9, 'luis.rodriguez@gmail.com', 'Luis', 'Rodriguez', '30.654.155', 14569828, '30-11-1985', 9, 9, '1188568279', 'Ramón castro 5586', 1);
+ INSERT INTO ALUMNOS VALUES(10, 'juan.fernandez@gmail.com', 'Juan', 'Fernandez', '45.879.111', 13358755, '01-02-2001', 9, 9, '1198521648', 'Pelliza 333', 1);
+ INSERT INTO ALUMNOS VALUES(11, 'soledad.rico@gmail.com', 'Soledad', 'Rico', '46.546.887', 33246788, '02-03-2002', 6, 2, '1164985238', 'Quintana 251', 1);
+ INSERT INTO ALUMNOS VALUES(12, 'soledad.rodriguez@gmail.com', 'Soledad', 'Rodriguez', '42.135.879', 22794613, '02-04-1998', 7, 2, '1197856346', 'Maipú 450', 1);
+ INSERT INTO ALUMNOS VALUES(13, 'nicolas.malaroda@gmail.com', 'Nicolas', 'Malaroda', '43.135.123', 45963158, '10-09-1999', 10, 9, '1135469879', 'Balbín 6847', 1);
+ INSERT INTO ALUMNOS VALUES(14, 'gabriel.hernandez@gmail.com', 'Gabriel', 'Hernandez', '41.587.124', 47896238, '07-07-1996', 12, 11, '1177985462', 'Ruiz Huidobro 1125', 1);
+ INSERT INTO ALUMNOS VALUES(15, 'florencia.pug@gmail.com', 'Florencia', 'Pug', '46.257.214', 13547982, '04-09-2002', 13, 11, '1198745132', 'Pinto 120', 1);
+
    create table cursos
  (
 	Id int primary key not null AUTO_INCREMENT,
