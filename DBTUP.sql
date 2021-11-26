@@ -299,5 +299,252 @@ values
     
  );
  
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 1,  5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 2,  6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 3,  7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 4,  8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 5,  9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 6,  10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 7,  1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 8,  2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 9,  3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 10, 4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 11, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 12, 6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 13, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 14, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(1, 15, 9);
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 1, 1,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 2, 2,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 3,3,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 4, 4,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 5, 5,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 6, 6,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 7, 7,1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 8, 8,2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 9, 9,3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 10, 10,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 11, 9,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 12, 8,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 13, 7,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 14, 7,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(2, 15, 6,9);  
+  
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 1, 1,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 2, 2,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 3, 3,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 4, 4,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 5, 5,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 6, 6,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 7, 7,1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 8, 8,2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 9, 9,3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 10, 10,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 11, 9,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 12, 8,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 13, 7,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 14, 7,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(3, 15, 6,9);  
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 1, 1,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 2, 2,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 3, 3,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 4, 4,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 5, 5,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 6, 6,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 7, 7,1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 8, 8,2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 9, 9,3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 10, 10,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 11, 9,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 12, 8,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 13, 7,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 14, 7,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(4, 15, 6,9);  
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 1, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 2, 6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 3, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 4, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 5, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 6, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 7, 1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 8, 2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 9, 3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 10, 4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 11, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 12, 6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 13, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 14, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(5, 15, 9);
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 1, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 2, 6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 3, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 4, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 5, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 6, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 7, 1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 8, 2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 9, 3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 10, 4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 11, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 12, 6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 13, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 14, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(6, 15, 9);
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 1, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 2, 6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 3, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 4, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 5, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 6, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 7, 1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 8, 2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 9, 3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 10, 4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 11, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 12, 6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 13, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 14, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(7, 15, 9);
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 1, 1,1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 2, 2,2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 3, 3,3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 4, 4,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 5, 10,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 6, 6,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 7, 7,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 8, 8,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 9, 9,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 10, 10,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 11, 1,1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 12, 3,3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 13, 7,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 14, 5,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(8, 15, 6,5); 
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 1, 1,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 2, 2,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 3, 3,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 4, 3,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 5, 10,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 6, 8,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 7, 7,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 8, 6,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 9, 1,1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 10, 2,2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 11, 3,3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 12, 10,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 13, 10,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 14, 10,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(9, 15, 9,9); 
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 1, 10,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 2, 10,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 3, 9,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 4, 9,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 5, 7,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 6, 8,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 7, 7,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 8, 8,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 9, 9,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 10, 6,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 11, 5,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 12, 7,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 13, 3,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 14, 8,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(10, 15, 2,9); 
+  
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 1, 5,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 2, 2,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 3, 3,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 4, 4,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 5, 10,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 6, 7,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 7, 7,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 8, 8,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 9, 9,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 10, 10,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 11, 4,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 12, 5,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 13, 7,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 14, 8,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(11, 15, 6,6);
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 1, 10,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 2, 10,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 3, 10,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 4, 10,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 5, 8,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 6, 6,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 7, 7,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 8, 8,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 9, 9,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 10, 10,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 11, 9,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 12, 7,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 13, 8,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 14, 5,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(12, 15, 6,9);  
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 1, 1,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 2, 2,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 3, 3,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 4, 4,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 5, 5,9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 6, 6,10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 7, 7,1);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 8, 8,2);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 9, 9,3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 10, 10,4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 11, 9,5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 12, 8,6);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 13, 7,7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 14, 7,8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1,Parcial2)VALUES(13, 15, 8,7); 
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 1, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 2, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 3, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 4, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 5, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 6, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 7, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 8, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 9, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 10, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 11, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 12, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 13, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 14, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(14, 15, 9);
+
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 1, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 2, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 3, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 4, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 5, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 6, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 7, 3);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 8, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 9, 8);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 10, 7);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 11, 4);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 12, 10);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 13, 9);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 14, 5);
+INSERT INTO alumnosXcurso (IdCurso,IdAlumno,Parcial1)VALUES(15, 15, 9);  
+  
+  
+  
+  
+  
+  
+  
+ 
 
  
