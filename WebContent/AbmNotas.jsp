@@ -140,16 +140,16 @@
 										<td><%=item.getApellido()%></td>
 										<td><input name="<%=item.getLegajo()%>Parcial1" class="form-control"
 											value="<%=item.getParcial1()%>" type="number" min="0"
-											max="10" /></td>
+											max="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' /></td>
 										<td><input name="<%=item.getLegajo()%>Recuperatorio1" class="form-control"
 											value="<%=item.getRecuperatorio1()%>" type="number" min="0"
-											max="10" /></td>
+											max="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
 										<td><input name="<%=item.getLegajo()%>Parcial2" class="form-control"
 											value="<%=item.getParcial2()%>" type="number" min="0"
-											max="10" /></td>
+											max="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
 										<td><input name="<%=item.getLegajo()%>Recuperatorio2" class="form-control"
 											value="<%=item.getRecuperatorio2()%>" type="number" min="0"
-											max="10" /></td>
+											max="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
 										<td><select name="<%=item.getLegajo()%>Estado"
 											class="custom-select" id="Estado">
 												<option>Seleccionar</option>

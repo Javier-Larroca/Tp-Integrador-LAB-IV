@@ -133,16 +133,17 @@ crossorigin="anonymous" />
 								<%         for (Materia m : listaMateria) { %>
 									<option value="<%= m.getId()%>"><%= m.getDescripcion()%></option>
 									<% }  %>
-							</select> <select class="custom-select" name="Semestre" id="Semestre">
+							</select> 
+							<select class="custom-select" name="Semestre" id="Semestre">
 								<option value="1">1er Semestre</option>
 								<option value="2">2do Semestre</option>
 							</select> <input name="Anio" id="Anio" type="text" class="form-control my-2"
-								placeholder="Año" /> <select class="custom-select"
-								name="Docente" id="Docente">
+								placeholder="Año" /> 
+								<select class="custom-select" name="Docente" id="Docente">
 									<%         for (Docente d : listaDocente) { %>
 									<option value="<%= d.getId()%>"><%= d.getLegajo() + " " + d.getNombre() + " " + d.getApellido()%></option>
 									<% }  %>
-							</select>
+								</select>
 							
 						</div>
 						<div class="card-footer text-right">
