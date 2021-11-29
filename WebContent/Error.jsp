@@ -12,9 +12,25 @@
 		request.getSession().removeAttribute("usuario");
 	%>
 
-<p>No tiene permiso para acceder</p>
-
-<a href="Login.jsp">Volver a login</a>
+	<div class="container-fluid bg-primary text-light">
+			<div class="row vh-100 justify-content-center align-content-center">
+				<div class="col-6">
+					<h2 class="h1 text-center">ERROR 404 <i class="fas fa-exclamation-triangle"></i></h2>
+					<%
+						request.getSession().removeAttribute("usuario");
+					%>
+					<div class="card bg-dark">
+						<div class="card-header">Error</div>
+						<div class="card-body">
+							No tiene permiso para acceder
+						</div>
+						<div class="card-footer text-center">
+							<a href="Login.jsp" class="btn btn-info">Volver a Inicio</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 </body>
 </html>
