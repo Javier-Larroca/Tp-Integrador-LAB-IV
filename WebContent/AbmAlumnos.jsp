@@ -33,6 +33,13 @@ crossorigin="anonymous" />
 	ArrayList<Alumno> lista = new ArrayList<Alumno>();
 	ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
 	ArrayList<Provincia> prov = new ArrayList<Provincia>();
+	String msj = "";
+	if(request.getAttribute("Repetido")!=null)
+		msj = (String)request.getAttribute("Repetido");
+	
+	if(request.getAttribute("listaAlumnos")!=null)
+		lista = (ArrayList<Alumno>)request.getAttribute("listaAlumnos");
+	
 	if(request.getAttribute("listaAlumnos")!=null)
 		lista = (ArrayList<Alumno>)request.getAttribute("listaAlumnos");
 	
@@ -42,10 +49,6 @@ crossorigin="anonymous" />
 	if(request.getAttribute("provincias")!=null)
 		prov = (ArrayList<Provincia>)request.getAttribute("provincias");
 
-	%>
-
-
-	<%
 		int usuario = 0;
 		Administrador AdministradorLogueado = new Administrador();
 		if(request.getSession().getAttribute("usuario") != null){
@@ -108,6 +111,20 @@ crossorigin="anonymous" />
 					<h3 class="card-title">Cargar Alumno</h3>
 				</div>
 				<div class="card-body">
+					<% if((request.getAttribute("Repetido")) != null){ %>
+								<div
+								class="alert alert-warning alert-dismissible fade show"
+								role="alert">
+								<strong>¡Error!</strong> <%= msj %>
+								<button
+									type="button"
+									class="close"
+									data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<%} %>
 					<form action="AlumnoServlet" method="post">
 						<div class="form-row">
 							<div class="col">
@@ -151,7 +168,7 @@ crossorigin="anonymous" />
 			</div>
 		</div>
 	
-			<div class="col">
+			<div class="col-9">
 			<div class="card bg-secondary">
 				<div class="card-body">
 	<table id="table_id" class="display">

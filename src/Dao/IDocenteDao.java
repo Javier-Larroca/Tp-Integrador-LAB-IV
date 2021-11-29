@@ -14,4 +14,5 @@ public interface IDocenteDao {
 	public Docente obtenerDocente(int id);
 	public ArrayList<Docente> listar();
 	public ArrayList<Curso> listaCursoDocente(int id);
+	public int DocenteExiste(int Legajo, String Mail, String Dni);
 }

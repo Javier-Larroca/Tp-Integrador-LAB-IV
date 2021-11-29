@@ -22,6 +22,9 @@ public class AlumnoDao implements IAlumnoDao {
 	private static final String eliminar = "UPDATE alumnos SET Estado = false WHERE Id = ?";
 	private static final String modificar = "UPDATE alumnos SET Nombre = ?, Apellido = ?, Mail = ?, Dni = ?, Legajo = ?,  FechaNac = ?, IdProvincia = ?, IdNacionalidad = ?, Telefono = ?, Direccion = ? WHERE Id = ?";
 	private static final String listar = "Select * From Alumnos A inner join Nacionalidades N on A.IdNacionalidad = N.Id inner join Provincias P on A.IdProvincia = P.Id  where Estado = 1";
+	private static final String alumnoDNI = "Select * from Alumnos Where Dni = ?";
+	private static final String alumnoLegajo = "Select * from Alumnos Where Legajo = ?";
+	private static final String alumnoMail = "Select * from Alumnos Where Mail = ?";
 	
 	@Override
 	public boolean agregar(Alumno alumno) {
@@ -199,4 +202,35 @@ public class AlumnoDao implements IAlumnoDao {
 				nacimiento, telefono, nac);
 	}
 
+	public int AlumnoExiste(int Legajo, String Mail, String Dni) {
+		PreparedStatement statement;
+		ResultSet resultado;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		
+		try 
+		{
+			statement = conexion.prepareStatement(alumnoDNI);
+			statement.setString(1, Dni);
+			resultado = statement.executeQuery();
+			if (resultado.next()) {
+				return 1;
+		}
+			statement = conexion.prepareStatement(alumnoLegajo);
+			statement.setInt(1, Legajo);
+			resultado = statement.executeQuery();
+			if (resultado.next()) {
+				return 2;
+		}
+			statement = conexion.prepareStatement(alumnoMail);
+			statement.setString(1, Mail);
+			resultado = statement.executeQuery();
+			if (resultado.next()) {
+				return 3;
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 }

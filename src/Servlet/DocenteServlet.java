@@ -99,25 +99,13 @@ public class DocenteServlet extends HttpServlet {
 			Nacionalidad nacionalidad = new Nacionalidad();
 			nacionalidad.setId(Integer.parseInt(request.getParameter("Nacionalidad")));
 			Localidad localidad = new Localidad();
-
+			RequestDispatcher rd;
 			localidad.setId(Integer.parseInt(request.getParameter("Localidad")));
 			
 			Docente nuevo = new Docente(mail, legajo, dni, nombre, apellido, direccion,
 					fechaNacimiento, telefono, nacionalidad, localidad,contrasenia);
 			
 			try {
-				
-				if(id > 0) {
-					nuevo.setId(id);
-					docenteNegocio.modificar(nuevo);
-					
-				}else {
-					usuarioNegocio.agregarUsuario(nuevo);
-					int idUsuario = usuarioNegocio.obtenerUsuario(nuevo.getMail(), nuevo.getContrasenia());
-					nuevo.setId(idUsuario);
-					docenteNegocio.agregar(nuevo);
-				}
-				
 				listaDeDocentes = docenteNegocio.listar();
 				nac = nacNegocio.listar();
 				loc = locNegocio.listar();
@@ -126,7 +114,49 @@ public class DocenteServlet extends HttpServlet {
 				request.setAttribute("nacionalidades", nac);
 				request.setAttribute("listaAlumnos", listaDeDocentes);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("AbmDocentes.jsp");
+				if(id > 0) {
+					nuevo.setId(id);
+					docenteNegocio.modificar(nuevo);
+					
+				}else {
+					int existe = docenteNegocio.DocenteExiste(nuevo.getLegajo(), nuevo.getMail(), nuevo.getDni());
+					switch (existe) {
+					case 0:{
+						usuarioNegocio.agregarUsuario(nuevo);
+						int idUsuario = usuarioNegocio.obtenerUsuario(nuevo.getMail(), nuevo.getContrasenia());
+						nuevo.setId(idUsuario);
+						docenteNegocio.agregar(nuevo);
+					}
+						break;
+					case 2:
+					{
+						request.setAttribute("Repetido", "El legajo ingresado ya se encuentra registrado");
+						rd = request.getRequestDispatcher("AbmDocentes.jsp");
+						rd.forward(request, response);
+					}
+					break;
+					case 3:{
+						request.setAttribute("Repetido", "El Mail ingresado ya se encuentra registrado");
+						rd = request.getRequestDispatcher("AbmDocentes.jsp");
+						rd.forward(request, response);
+					}							
+						break;
+					case 1:
+					{
+						request.setAttribute("Repetido", "El DNI ingresado ya se encuentra registrado");
+						rd = request.getRequestDispatcher("AbmDocentes.jsp");
+						rd.forward(request, response);
+					}
+					break;
+
+					default:
+						break;
+					}
+				}
+				
+				
+				
+				rd = request.getRequestDispatcher("AbmDocentes.jsp");
 				rd.forward(request, response);
 				
 				

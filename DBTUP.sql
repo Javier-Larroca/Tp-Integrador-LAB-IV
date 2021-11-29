@@ -175,7 +175,7 @@ values
   create table alumnos
  (
 	Id int primary key not null AUTO_INCREMENT,
-    Mail varchar(100) not null,
+    Mail varchar(100) not null unique,
     Nombre varchar(64) not null,
     Apellido varchar(64) not null,
     Dni varchar(10) not null unique,

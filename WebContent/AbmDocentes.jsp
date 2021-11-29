@@ -37,6 +37,10 @@
 		ArrayList<Docente> lista = new ArrayList<Docente>();
 		ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
 		ArrayList<Localidad> loc = new ArrayList<Localidad>();
+		String msj = "";
+		if(request.getAttribute("Repetido")!=null)
+			msj = (String)request.getAttribute("Repetido");
+		
 		if (request.getAttribute("listaAlumnos") != null)
 			lista = (ArrayList<Docente>) request.getAttribute("listaAlumnos");
 
@@ -108,6 +112,20 @@
 						<h3 class="card-title">Cargar Docente</h3>
 					</div>
 					<div class="card-body">
+					<% if((request.getAttribute("Repetido")) != null){ %>
+								<div
+								class="alert alert-warning alert-dismissible fade show"
+								role="alert">
+								<strong>¡Error!</strong> <%= msj %>
+								<button
+									type="button"
+									class="close"
+									data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<%} %>
 						<form action="DocenteServlet" method="post">
 							<div class="form-row">
 								<div class="col">
@@ -151,7 +169,7 @@
 
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-9">
 				<div class="card bg-secondary">
 					<div class="card-body">
 						<table id="table_id" class="display">

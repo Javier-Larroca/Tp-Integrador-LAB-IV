@@ -69,6 +69,7 @@ public class AlumnoServlet extends HttpServlet {
 		ProvinciaNegocio provNegocio = new ProvinciaNegocio();
 		NacionalidadNegocio nacNegocio = new NacionalidadNegocio();
 		AlumnoNegocio alumnoNegocio = new AlumnoNegocio();
+		RequestDispatcher rd;
 		
 
 		
@@ -95,16 +96,6 @@ public class AlumnoServlet extends HttpServlet {
 			
 			try {
 				
-				if(id > 0) {
-					nuevo.setId(id);
-					alumnoNegocio.modificar(nuevo);
-					
-				}else {
-					
-					alumnoNegocio.agregar(nuevo);
-					
-				}
-				
 				listaDeAlumnos = alumnoNegocio.listar();
 				nac = nacNegocio.listar();
 				prov = provNegocio.listar();
@@ -112,7 +103,46 @@ public class AlumnoServlet extends HttpServlet {
 				request.setAttribute("nacionalidades", nac);
 				request.setAttribute("listaAlumnos", listaDeAlumnos);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("AbmAlumnos.jsp");
+				
+				
+				if(id > 0) {
+					nuevo.setId(id);
+					alumnoNegocio.modificar(nuevo);
+					
+				}else {
+					int existe = alumnoNegocio.AlumnoExiste(nuevo.getLegajo(), nuevo.getMail(), nuevo.getDni());
+						switch (existe) {
+						case 0:{
+							alumnoNegocio.agregar(nuevo);	
+						}
+							break;
+						case 2:
+						{
+							request.setAttribute("Repetido", "El legajo ingresado ya se encuentra registrado");
+							rd = request.getRequestDispatcher("AbmAlumnos.jsp");
+							rd.forward(request, response);
+						}
+						break;
+						case 3:{
+							request.setAttribute("Repetido", "El Mail ingresado ya se encuentra registrado");
+							rd = request.getRequestDispatcher("AbmAlumnos.jsp");
+							rd.forward(request, response);
+						}							
+							break;
+						case 1:
+						{
+							request.setAttribute("Repetido", "El DNI ingresado ya se encuentra registrado");
+							rd = request.getRequestDispatcher("AbmAlumnos.jsp");
+							rd.forward(request, response);
+						}
+						break;
+
+						default:
+							break;
+						}
+					}
+								
+				rd = request.getRequestDispatcher("AbmAlumnos.jsp");
 				rd.forward(request, response);
 				
 				

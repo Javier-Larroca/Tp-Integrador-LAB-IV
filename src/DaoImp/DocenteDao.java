@@ -26,6 +26,9 @@ public class DocenteDao implements IDocenteDao{
 										+ "INNER JOIN NACIONALIDADES NAC ON NAC.ID = DOC.IDNACIONALIDAD WHERE ESTADO = 1";
 	private static final String existeDocente = "SELECT ID FROM DOCENTES WHERE DNI = ?";
 	private static final String listaCursosDocente = "Select * FROM Cursos C inner join Materias M on C.IdMateria = M.Id WHERE IdDocente = ?";
+	private static final String DOCENTESDNI = "Select * from DOCENTES Where Dni = ?";
+	private static final String DOCENTESLegajo = "Select * from DOCENTES Where Legajo = ?";
+	private static final String DOCENTESMail = "Select * from DOCENTES Where Mail = ?";
 	
 	@Override
 	public boolean agregar(Docente docente) {
@@ -288,4 +291,38 @@ public class DocenteDao implements IDocenteDao{
 		return new Curso(id,semestre,materia,anio,docente);
 	
 	}
+
+	@Override
+	public int DocenteExiste(int Legajo, String Mail, String Dni) {
+		PreparedStatement statement;
+		ResultSet resultado;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		
+		try 
+		{
+			statement = conexion.prepareStatement(DOCENTESDNI);
+			statement.setString(1, Dni);
+			resultado = statement.executeQuery();
+			if (resultado.next()) {
+				return 1;
+		}
+			statement = conexion.prepareStatement(DOCENTESLegajo);
+			statement.setInt(1, Legajo);
+			resultado = statement.executeQuery();
+			if (resultado.next()) {
+				return 2;
+		}
+			statement = conexion.prepareStatement(DOCENTESMail);
+			statement.setString(1, Mail);
+			resultado = statement.executeQuery();
+			if (resultado.next()) {
+				return 3;
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 }
