@@ -88,7 +88,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="AlumnoServlet">Alumnos</a>
             </li>
-
         </ul>
     </div>
     <div class="collapse navbar-collapse d-flex justify-content-end">
@@ -180,11 +179,11 @@
 									<th scope="col">Apellido</th>
 									<th scope="col">DNI</th>
 									<th scope="col">Fecha de Nacimiento</th>
-									<th scope="col">DirecciÃ³n</th>
+									<th scope="col">Dirección</th>
 									<th scope="col">Localidad</th>
 									<th scope="col">Nacionalidad</th>
 									<th scope="col">Email</th>
-									<th scope="col">TelÃ©fono</th>
+									<th scope="col">Teléfono</th>
 									<th scope="col">Editar</th>
 									<th scope="col">Eliminar</th>
 								</tr>

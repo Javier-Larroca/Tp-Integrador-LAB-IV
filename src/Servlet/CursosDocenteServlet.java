@@ -31,7 +31,18 @@ public class CursosDocenteServlet extends HttpServlet {
 		
 		ArrayList<Curso> cursosXdocente = new ArrayList<Curso>();
 		DocenteNegocio cursoNegocio = new DocenteNegocio();
-		int idDocente = ((Docente)request.getAttribute("Docente")).getId();
+		int idDocente = 0;
+		
+		if(request.getParameter("Docente")!=null) {
+			
+			idDocente = Integer.parseInt(request.getParameter("Docente"));
+			
+		}else {
+			if(((Docente)request.getAttribute("Docente")).getId() > 0) {
+				
+				idDocente = ((Docente)request.getAttribute("Docente")).getId();
+			}
+		}
 		
 		
 		try {

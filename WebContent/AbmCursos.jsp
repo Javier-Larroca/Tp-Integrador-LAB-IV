@@ -137,7 +137,7 @@ crossorigin="anonymous" />
 							<select class="custom-select" name="Semestre" id="Semestre">
 								<option value="1">1er Semestre</option>
 								<option value="2">2do Semestre</option>
-							</select> <input name="Anio" id="Anio" type="text" class="form-control my-2"
+							</select> <input name="Anio" maxLength="4" id="Anio" type="text" class="form-control my-2"
 								placeholder="Año" /> 
 								<select class="custom-select" name="Docente" id="Docente">
 									<%         for (Docente d : listaDocente) { %>

@@ -106,19 +106,24 @@ public class DocenteServlet extends HttpServlet {
 					fechaNacimiento, telefono, nacionalidad, localidad,contrasenia);
 			
 			try {
-				listaDeDocentes = docenteNegocio.listar();
 				nac = nacNegocio.listar();
 				loc = locNegocio.listar();
-
 				request.setAttribute("localidades", loc);
 				request.setAttribute("nacionalidades", nac);
-				request.setAttribute("listaAlumnos", listaDeDocentes);
 				
 				if(id > 0) {
 					nuevo.setId(id);
 					docenteNegocio.modificar(nuevo);
+					listaDeDocentes = docenteNegocio.listar();
+					request.setAttribute("listaAlumnos", listaDeDocentes);
 					
-				}else {
+				}
+				else {
+					
+
+					listaDeDocentes = docenteNegocio.listar();
+					request.setAttribute("listaAlumnos", listaDeDocentes);
+					
 					int existe = docenteNegocio.DocenteExiste(nuevo.getLegajo(), nuevo.getMail(), nuevo.getDni());
 					switch (existe) {
 					case 0:{
@@ -126,6 +131,10 @@ public class DocenteServlet extends HttpServlet {
 						int idUsuario = usuarioNegocio.obtenerUsuario(nuevo.getMail(), nuevo.getContrasenia());
 						nuevo.setId(idUsuario);
 						docenteNegocio.agregar(nuevo);
+						listaDeDocentes = docenteNegocio.listar();
+						request.setAttribute("listaAlumnos", listaDeDocentes);
+
+						
 					}
 						break;
 					case 2:
@@ -153,14 +162,10 @@ public class DocenteServlet extends HttpServlet {
 						break;
 					}
 				}
-				
-				
-				
+
 				rd = request.getRequestDispatcher("AbmDocentes.jsp");
 				rd.forward(request, response);
-				
-				
-				
+	
 			} catch (Exception e) {
 				// TODO: handle exception
 			}

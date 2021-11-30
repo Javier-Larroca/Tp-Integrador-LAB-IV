@@ -57,7 +57,7 @@
 	%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="InicioDocente.jsp">UTN-TUP</a>
+  <a class="navbar-brand" href="CursosDocenteServlet?Docente=<%=docenteUsuario.getId() %>">UTN-TUP</a>
   <button
     class="navbar-toggler"
     type="button"

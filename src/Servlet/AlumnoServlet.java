@@ -96,34 +96,46 @@ public class AlumnoServlet extends HttpServlet {
 			
 			try {
 				
-				listaDeAlumnos = alumnoNegocio.listar();
-				nac = nacNegocio.listar();
-				prov = provNegocio.listar();
-				request.setAttribute("provincias", prov);
-				request.setAttribute("nacionalidades", nac);
-				request.setAttribute("listaAlumnos", listaDeAlumnos);
+
 				
 				
 				
 				if(id > 0) {
 					nuevo.setId(id);
 					alumnoNegocio.modificar(nuevo);
+					listaDeAlumnos = alumnoNegocio.listar();
+					nac = nacNegocio.listar();
+					prov = provNegocio.listar();
+					request.setAttribute("provincias", prov);
+					request.setAttribute("nacionalidades", nac);
+					request.setAttribute("listaAlumnos", listaDeAlumnos);
 					
 				}else {
 					int existe = alumnoNegocio.AlumnoExiste(nuevo.getLegajo(), nuevo.getMail(), nuevo.getDni());
-						switch (existe) {
+					nac = nacNegocio.listar();
+					prov = provNegocio.listar();
+					request.setAttribute("provincias", prov);
+					request.setAttribute("nacionalidades", nac);
+					listaDeAlumnos = alumnoNegocio.listar();
+					request.setAttribute("listaAlumnos", listaDeAlumnos);
+					
+					switch (existe) {
 						case 0:{
-							alumnoNegocio.agregar(nuevo);	
+							alumnoNegocio.agregar(nuevo);
+							listaDeAlumnos = alumnoNegocio.listar();
+							request.setAttribute("listaAlumnos", listaDeAlumnos);	
 						}
 							break;
 						case 2:
 						{
+	
 							request.setAttribute("Repetido", "El legajo ingresado ya se encuentra registrado");
 							rd = request.getRequestDispatcher("AbmAlumnos.jsp");
 							rd.forward(request, response);
 						}
 						break;
 						case 3:{
+	
 							request.setAttribute("Repetido", "El Mail ingresado ya se encuentra registrado");
 							rd = request.getRequestDispatcher("AbmAlumnos.jsp");
 							rd.forward(request, response);
@@ -131,6 +143,7 @@ public class AlumnoServlet extends HttpServlet {
 							break;
 						case 1:
 						{
+	
 							request.setAttribute("Repetido", "El DNI ingresado ya se encuentra registrado");
 							rd = request.getRequestDispatcher("AbmAlumnos.jsp");
 							rd.forward(request, response);

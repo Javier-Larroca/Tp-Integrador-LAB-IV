@@ -5,7 +5,12 @@
 ></script>
 <script type="text/javascript">
   $(document).ready(function () {
-    $("#table_id").DataTable();
+    $("#table_id").DataTable({
+    	language: {
+            url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json",
+          }
+    });
+    
   });
 </script>
 <script type="text/javascript">
@@ -93,6 +98,7 @@ $('#table_id').click((e)=>{
         $("#FechaNacimiento").val(fechaNacimiento);
         $("#Legajo").val(legajo);
         $("#Legajo").attr("readonly",true);
+        $("#DNI").attr("readonly",true);
         $("#btnGuardar").val('Guardar Cambios');
         $("#Contrasena").css("display", "none");
         
