@@ -153,29 +153,29 @@ insert into usuarios (Mail,Contrasena,Tipo) values ('Abrahan@Ramírez.com','Abra
  
 insert into docentes (id,Nombre,Apellido,Dni,Legajo,FechaNac,IdLocalidad,IdNacionalidad,Telefono,Direccion) 
 values
-(3, 'Laura','Radetich', '12391', '1239', '10-02-1989', 2, 1, '0303456', 'Corrientes 456'),
-(4, 'Agustina','Gonzalez', '45682', '4568', '09-01-1984', 1, 2, '01145682', 'Rawson 123'),
-(5, 'Antonella','Rodriguez', '78973', '7897', '22-03-1994', 3, 5, '01178973', 'Boedo 789'),
-(6, 'Martina','Fernandez', '74164', '7416', '15-04-1996', 5, 4, '01174164', 'Alvear 987'),
-(7, 'Joaquín','Lopez', '85255', '8525', '7-05-1980', 5, 15, '01185255', 'San Martin 963'),
-(8, 'Leonardo','Diaz', '96346', '9634', '13-06-1987', 6, 13, '01196346', 'Flesia 7410'),
-(9, 'ALuciano','Martinez', '36937', '3693', '25-07-1989', 7, 12, '01136937', 'Belgrano 852'),
-(10, 'Cecilia','Pérez', '25828', '2582', '27-08-1990', 8, 11, '01125828', 'Moreno 654'),
-(11, 'Delfina','Romero', '14719', '1471', '28-09-1984', 9, 10, '01114719', 'Garay 486'),
-(12, 'Florencia','Sánchez', '32191', '3219', '19-10-1993', 10, 9, '01132191', 'Sarmiento 153'),
-(13, 'Olivia','García', '65482', '6548', '02-11-1992', 11, 8, '01165482', 'Suarez 759'),
-(14, 'Belén','Sosa', '98773', '9877', '04-12-1979', 12, 7, '01198773', 'Medina 953'),
-(15, 'Valentino','Torres', '95164', '9516', '22-01-1984', 13, 6, '01195164', 'Francia 751'),
-(16, 'Martín','Alvarez', '75355', '7535', '17-02-1987', 14, 5, '01175355', 'Rivadavia 684'),
-(17, 'Carolina','Glere', '62446', '6244', '21-03-1995', 15, 4, '01162446', 'Avellaneda 351'),
-(18, 'Esteban','Quito', '75937', '7593', '17-04-1997', 1, 2, '01175937', 'Colon 957'),
-(19, 'Suana','Alvarez', '15328', '1532', '04-05-1982', 2, 3, '01115328', 'España 1532'),
-(20, 'Abrahan','Ramírez', '75119', '7511', '19-12-1983', 3, 1, '01175119', 'Roca 1593');
+(3, 'Laura','Radetich', '38123918', '1239', '1989-02-10', 2, 1, '0303456', 'Corrientes 456'),
+(4, 'Agustina','Gonzalez', '36456827', '4568', '1984-01-09', 1, 2, '01145682', 'Rawson 123'),
+(5, 'Antonella','Rodriguez', '40789736', '7897', '1994-03-22', 3, 5, '01178973', 'Boedo 789'),
+(6, 'Martina','Fernandez', '41741645', '7416', '1996-04-15', 5, 4, '01174164', 'Alvear 987'),
+(7, 'Joaquín','Lopez', '37852554', '8525', '1980-05-07', 5, 15, '01185255', 'San Martin 963'),
+(8, 'Leonardo','Diaz', '42963463', '9634', '1987-06-13', 6, 13, '01196346', 'Flesia 7410'),
+(9, 'ALuciano','Martinez', '43369372', '3693', '1989-07-25', 7, 12, '01136937', 'Belgrano 852'),
+(10, 'Cecilia','Pérez', '39258281', '2582', '1990-08-27', 8, 11, '01125828', 'Moreno 654'),
+(11, 'Delfina','Romero', '45147190', '1471', '28-09-1984', 9, 10, '01114719', 'Garay 486'),
+(12, 'Florencia','Sánchez', '44321910', '3219', '1993-10-19', 10, 9, '01132191', 'Sarmiento 153'),
+(13, 'Olivia','García', '35654821', '6548', '1992-11-02', 11, 8, '01165482', 'Suarez 759'),
+(14, 'Belén','Sosa', '36987732', '9877', '1979-12-04', 12, 7, '01198773', 'Medina 953'),
+(15, 'Valentino','Torres', '33951643', '9516', '1984-01-22', 13, 6, '01195164', 'Francia 751'),
+(16, 'Martín','Alvarez', '40753554', '7535', '1987-02-17', 14, 5, '01175355', 'Rivadavia 684'),
+(17, 'Carolina','Glere', '41624465', '6244', '1995-03-21', 15, 4, '01162446', 'Avellaneda 351'),
+(18, 'Esteban','Quito', '39759376', '7593', '1997-17-04', 1, 2, '01175937', 'Colon 957'),
+(19, 'Suana','Alvarez', '42153287', '1532', '1982-05-04', 2, 3, '01115328', 'España 1532'),
+(20, 'Abrahan','Ramírez', '38751198', '7511', '1983-12-19', 3, 1, '01175119', 'Roca 1593');
  
   create table alumnos
  (
 	Id int primary key not null AUTO_INCREMENT,
-    Mail varchar(100) not null,
+    Mail varchar(100) not null unique,
     Nombre varchar(64) not null,
     Apellido varchar(64) not null,
     Dni varchar(10) not null unique,
@@ -192,21 +192,21 @@ values
     
  );
  
- INSERT INTO ALUMNOS VALUES(1, 'elmerr.vasquez@gmail.com', 'Elmer', 'Vasquez', '38.749.844', 16854975, '23-07-1995', 1, 1, '1168987456', 'Superi 3356', 1);
- INSERT INTO ALUMNOS VALUES(2, 'benito.diaz@gmail.com', 'Benito', 'Diaz', '41.759.884', 65432132, '15-06-1995', 2, 3, '1189654321', 'Nuñez 6589', 1);
- INSERT INTO ALUMNOS VALUES(3, 'david.gonzales@gmail.com', 'David', 'Gonzales', '37.569.852', 66552285, '08-10-1993', 3, 1, '1164895212', 'Larralde 3583', 1);
- INSERT INTO ALUMNOS VALUES(4, 'noelia.marquez@gmail.com', 'Noelia', 'Marquez', '37.885.997', 22134681, '15-02-1997', 4, 5, '1179854631', 'Juncal 2259', 1);
- INSERT INTO ALUMNOS VALUES(5, 'mariana.martinez@gmail.com', 'Mariana', 'Martinez', '41.665.321', 3215648, '15-06-1997', 5, 4, '1146879211', 'Honduras 1135', 1);
- INSERT INTO ALUMNOS VALUES(6, 'diego.pugliese@gmail.com', 'Diego', 'Pugliese', '38.998.265', 32154685, '22-10-1995', 6, 2, '1154226879', 'Arribeños 4652', 1);
- INSERT INTO ALUMNOS VALUES(7, 'noelia.yrigaray@gmail.com', 'Noelia', 'Yrigaray', '35.648.222', 54569872, '22-11-1990', 7, 8, '1133115549', 'San martin 2256', 1);
- INSERT INTO ALUMNOS VALUES(8, 'damian.ferreira@gmail.com', 'Damian', 'Ferreira', '36.221.879', 21694487, '30-12-1991', 8, 9, '1143568279', 'Paraná 3399', 1);
- INSERT INTO ALUMNOS VALUES(9, 'luis.rodriguez@gmail.com', 'Luis', 'Rodriguez', '30.654.155', 14569828, '30-11-1985', 9, 9, '1188568279', 'Ramón castro 5586', 1);
- INSERT INTO ALUMNOS VALUES(10, 'juan.fernandez@gmail.com', 'Juan', 'Fernandez', '45.879.111', 13358755, '01-02-2001', 9, 9, '1198521648', 'Pelliza 333', 1);
- INSERT INTO ALUMNOS VALUES(11, 'soledad.rico@gmail.com', 'Soledad', 'Rico', '46.546.887', 33246788, '02-03-2002', 6, 2, '1164985238', 'Quintana 251', 1);
- INSERT INTO ALUMNOS VALUES(12, 'soledad.rodriguez@gmail.com', 'Soledad', 'Rodriguez', '42.135.879', 22794613, '02-04-1998', 7, 2, '1197856346', 'Maipú 450', 1);
- INSERT INTO ALUMNOS VALUES(13, 'nicolas.malaroda@gmail.com', 'Nicolas', 'Malaroda', '43.135.123', 45963158, '10-09-1999', 10, 9, '1135469879', 'Balbín 6847', 1);
- INSERT INTO ALUMNOS VALUES(14, 'gabriel.hernandez@gmail.com', 'Gabriel', 'Hernandez', '41.587.124', 47896238, '07-07-1996', 12, 11, '1177985462', 'Ruiz Huidobro 1125', 1);
- INSERT INTO ALUMNOS VALUES(15, 'florencia.pug@gmail.com', 'Florencia', 'Pug', '46.257.214', 13547982, '04-09-2002', 13, 11, '1198745132', 'Pinto 120', 1);
+ INSERT INTO ALUMNOS VALUES(1, 'elmerr.vasquez@gmail.com', 'Elmer', 'Vasquez', '38749844', 16854975, '1995-07-23', 1, 1, '1168987456', 'Superi 3356', 1);
+ INSERT INTO ALUMNOS VALUES(2, 'benito.diaz@gmail.com', 'Benito', 'Diaz', '41759884', 65432132, '1995-06-15', 2, 3, '1189654321', 'Nuñez 6589', 1);
+ INSERT INTO ALUMNOS VALUES(3, 'david.gonzales@gmail.com', 'David', 'Gonzales', '37569852', 66552285, '1993-08-10', 3, 1, '1164895212', 'Larralde 3583', 1);
+ INSERT INTO ALUMNOS VALUES(4, 'noelia.marquez@gmail.com', 'Noelia', 'Marquez', '37885997', 22134681, '1997-02-15', 4, 5, '1179854631', 'Juncal 2259', 1);
+ INSERT INTO ALUMNOS VALUES(5, 'mariana.martinez@gmail.com', 'Mariana', 'Martinez', '41665321', 3215648, '1997-06-15', 5, 4, '1146879211', 'Honduras 1135', 1);
+ INSERT INTO ALUMNOS VALUES(6, 'diego.pugliese@gmail.com', 'Diego', 'Pugliese', '38998265', 32154685, '1995-10-22', 6, 2, '1154226879', 'Arribeños 4652', 1);
+ INSERT INTO ALUMNOS VALUES(7, 'noelia.yrigaray@gmail.com', 'Noelia', 'Yrigaray', '35648222', 54569872, '1990-11-22', 7, 8, '1133115549', 'San martin 2256', 1);
+ INSERT INTO ALUMNOS VALUES(8, 'damian.ferreira@gmail.com', 'Damian', 'Ferreira', '36221879', 21694487, '1991-12-30', 8, 9, '1143568279', 'Paraná 3399', 1);
+ INSERT INTO ALUMNOS VALUES(9, 'luis.rodriguez@gmail.com', 'Luis', 'Rodriguez', '30654155', 14569828, '1985-11-30', 9, 9, '1188568279', 'Ramón castro 5586', 1);
+ INSERT INTO ALUMNOS VALUES(10, 'juan.fernandez@gmail.com', 'Juan', 'Fernandez', '45879111', 13358755, '2001-01-02', 9, 9, '1198521648', 'Pelliza 333', 1);
+ INSERT INTO ALUMNOS VALUES(11, 'soledad.rico@gmail.com', 'Soledad', 'Rico', '46546887', 33246788, '2002-02-03', 6, 2, '1164985238', 'Quintana 251', 1);
+ INSERT INTO ALUMNOS VALUES(12, 'soledad.rodriguez@gmail.com', 'Soledad', 'Rodriguez', '42135879', 22794613, '1998-02-04', 7, 2, '1197856346', 'Maipú 450', 1);
+ INSERT INTO ALUMNOS VALUES(13, 'nicolas.malaroda@gmail.com', 'Nicolas', 'Malaroda', '43135123', 45963158, '1999-10-09', 10, 9, '1135469879', 'Balbín 6847', 1);
+ INSERT INTO ALUMNOS VALUES(14, 'gabriel.hernandez@gmail.com', 'Gabriel', 'Hernandez', '41587124', 47896238, '1996-07-07', 12, 11, '1177985462', 'Ruiz Huidobro 1125', 1);
+ INSERT INTO ALUMNOS VALUES(15, 'florencia.pug@gmail.com', 'Florencia', 'Pug', '46257214', 13547982, '2002-04-09', 13, 11, '1198745132', 'Pinto 120', 1);
 
    create table cursos
  (

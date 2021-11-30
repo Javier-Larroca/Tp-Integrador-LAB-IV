@@ -50,5 +50,11 @@ public class DocenteNegocio implements IDocenteNegocio{
 		return datos.listaCursoDocente(id);
 	}
 
+	@Override
+	public int DocenteExiste(int Legajo, String Mail, String Dni) {
+		// TODO Auto-generated method stub
+		return datos.DocenteExiste(Legajo, Mail, Dni);
+	}
+
 	
 }

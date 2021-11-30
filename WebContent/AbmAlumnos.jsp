@@ -33,6 +33,13 @@ crossorigin="anonymous" />
 	ArrayList<Alumno> lista = new ArrayList<Alumno>();
 	ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
 	ArrayList<Provincia> prov = new ArrayList<Provincia>();
+	String msj = "";
+	if(request.getAttribute("Repetido")!=null)
+		msj = (String)request.getAttribute("Repetido");
+	
+	if(request.getAttribute("listaAlumnos")!=null)
+		lista = (ArrayList<Alumno>)request.getAttribute("listaAlumnos");
+	
 	if(request.getAttribute("listaAlumnos")!=null)
 		lista = (ArrayList<Alumno>)request.getAttribute("listaAlumnos");
 	
@@ -42,10 +49,6 @@ crossorigin="anonymous" />
 	if(request.getAttribute("provincias")!=null)
 		prov = (ArrayList<Provincia>)request.getAttribute("provincias");
 
-	%>
-
-
-	<%
 		int usuario = 0;
 		Administrador AdministradorLogueado = new Administrador();
 		if(request.getSession().getAttribute("usuario") != null){
@@ -108,20 +111,34 @@ crossorigin="anonymous" />
 					<h3 class="card-title">Cargar Alumno</h3>
 				</div>
 				<div class="card-body">
+					<% if((request.getAttribute("Repetido")) != null){ %>
+								<div
+								class="alert alert-warning alert-dismissible fade show"
+								role="alert">
+								<strong>¡Error!</strong> <%= msj %>
+								<button
+									type="button"
+									class="close"
+									data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<%} %>
 					<form action="AlumnoServlet" method="post">
 						<div class="form-row">
 							<div class="col">
 							<input type="hidden" id="Id" name="Id" type="text" class="form-control my-2"
 									placeholder="Id" value="0"/>
 								<input name="Nombre" id="Nombre" type="text" class="form-control my-2"
-									placeholder="Nombre" /> <input
-									name="DNI" id="DNI" type="text" class="form-control my-2"
-									placeholder="DNI" /> <input
-									name="Direccion" id="Direccion" type="text" class="form-control my-2"
-									placeholder="Dirección" /> <input
-									name="Mail" type="email" class="form-control my-2"
-									placeholder="Mail" id="Mail" /> <select
-									class="custom-select" name="Nacionalidad" id="Nacionalidad">
+									placeholder="Nombre" maxLength="64" /> 
+									<input name="DNI" id="DNI" type="text" class="form-control my-2"
+									placeholder="DNI" maxLength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' /> 
+									<input name="Direccion" id="Direccion" type="text" class="form-control my-2"
+									placeholder="Dirección" maxLength="250" /> 
+									<input name="Mail" type="email" class="form-control my-2"
+									placeholder="Mail" id="Mail" maxLength="100" /> 
+									<select class="custom-select" name="Nacionalidad" id="Nacionalidad">
 									<%         for (Nacionalidad n : nac) { %>
 									<option value="<%= n.getId()%>"><%= n.getDescripcion()%></option>
 									<% }  %>
@@ -129,19 +146,18 @@ crossorigin="anonymous" />
 							</div>
 							<div class="col">
 								<input name="Apellido" id="Apellido" type="text" class="form-control my-2"
-									placeholder="Apellido" /> 
-									<input
-									name="FechaNacimiento" type="date" id="FechaNacimiento" class="form-control my-2" />
-									
-								<select class="custom-select" name="Provincia" id="Provincia">
+									placeholder="Apellido" maxLength="64" /> 
+									<input name="FechaNacimiento" type="date" id="FechaNacimiento" class="form-control my-2" />
+									<select class="custom-select" name="Provincia" id="Provincia">
 									<%         for (Provincia p : prov) { %>
 									<option value="<%= p.getId()%>"><%= p.getDescripcion()%></option>
 									<% }  %>
 									
-								</select> <input name="Telefono" id="Telefono" type="text" class="form-control my-2"
-									placeholder="Teléfono" /> <input
-									name="Legajo" id="Legajo" type="text" class="form-control my-2"
-									placeholder="Legajo" />
+									</select> 
+									<input name="Telefono" id="Telefono" type="text" class="form-control my-2"
+									placeholder="Teléfono" maxLength="20" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/> 
+									<input name="Legajo" id="Legajo" type="number" class="form-control my-2"
+									placeholder="Legajo" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
 							</div>
 						</div>
 				<div class="card-footer text-right">
@@ -152,7 +168,7 @@ crossorigin="anonymous" />
 			</div>
 		</div>
 	
-			<div class="col">
+			<div class="col-9">
 			<div class="card bg-secondary">
 				<div class="card-body">
 	<table id="table_id" class="display">

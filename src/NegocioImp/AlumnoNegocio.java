@@ -35,5 +35,11 @@ public class AlumnoNegocio implements IAlumnoNegocio {
 		return datos.listar();
 	}
 
+	@Override
+	public int AlumnoExiste(int Legajo, String Mail, String Dni) {
+		// TODO Auto-generated method stub
+		return datos.AlumnoExiste(Legajo, Mail, Dni);
+	}
+
 
 }

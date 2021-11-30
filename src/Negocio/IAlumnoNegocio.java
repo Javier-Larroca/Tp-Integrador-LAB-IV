@@ -11,4 +11,5 @@ public interface IAlumnoNegocio {
 	public boolean eliminar(int id);
 	public boolean modificar(Alumno alumno);
 	public List<Alumno> listar();	
+	public int AlumnoExiste(int Legajo, String Mail, String Dni);
 }

@@ -13,4 +13,5 @@ public interface IDocenteNegocio {
 	public boolean existe(String dni);
 	public ArrayList<Docente> listar();
 	public ArrayList<Curso> listaCursoDocente(int id);
+	public int DocenteExiste(int Legajo, String Mail, String Dni);
 }

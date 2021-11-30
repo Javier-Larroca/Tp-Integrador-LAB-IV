@@ -37,6 +37,10 @@
 		ArrayList<Docente> lista = new ArrayList<Docente>();
 		ArrayList<Nacionalidad> nac = new ArrayList<Nacionalidad>();
 		ArrayList<Localidad> loc = new ArrayList<Localidad>();
+		String msj = "";
+		if(request.getAttribute("Repetido")!=null)
+			msj = (String)request.getAttribute("Repetido");
+		
 		if (request.getAttribute("listaAlumnos") != null)
 			lista = (ArrayList<Docente>) request.getAttribute("listaAlumnos");
 
@@ -108,37 +112,53 @@
 						<h3 class="card-title">Cargar Docente</h3>
 					</div>
 					<div class="card-body">
+					<% if((request.getAttribute("Repetido")) != null){ %>
+								<div
+								class="alert alert-warning alert-dismissible fade show"
+								role="alert">
+								<strong>¡Error!</strong> <%= msj %>
+								<button
+									type="button"
+									class="close"
+									data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<%} %>
 						<form action="DocenteServlet" method="post">
 							<div class="form-row">
 								<div class="col">
 									<input type="hidden" id="Id" name="Id" type="text" class="form-control my-2"
 									placeholder="Id" value="0"/>
 									<input name="Nombre" type="text" id="Nombre" class="form-control my-2"
-										placeholder="Nombre" /> <input name="DNI" id="DNI"
-										type="text" class="form-control my-2" placeholder="DNI" />
+										placeholder="Nombre" maxLength="64" /> 
+									<input name="DNI" id="DNI" type="text" class="form-control my-2" placeholder="DNI" maxLength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
 									<input name="Direccion" id="Direccion" type="text" class="form-control my-2"
-										placeholder="Dirección" /> <input id="Mail"
-										name="Mail" type="email" class="form-control my-2"
-										placeholder="Mail" /> <select
-										class="custom-select" name="Nacionalidad" id="Nacionalidad">
+										placeholder="Dirección" maxLength="250" /> 
+									<input id="Mail" name="Mail" type="email" class="form-control my-2"
+										placeholder="Mail" maxLength="100" /> 
+										<select class="custom-select" name="Nacionalidad" id="Nacionalidad">
 										<%         for (Nacionalidad n : nac) { %>
 									<option value="<%= n.getId()%>"><%= n.getDescripcion()%></option>
 									<% }  %>
-									</select> <input id="Contrasena" name="Contrasena" type="text" class="form-control my-2"
-										placeholder="Contraseña" />
+									</select> 
+									<input id="Contrasena" name="Contrasena" type="text" class="form-control my-2"
+										placeholder="Contraseña" maxLength="20" />
 								</div>
 								<div class="col">
 									<input name="Apellido" id="Apellido" type="text" class="form-control my-2"
-										placeholder="Apellido" /> <input
-										name="FechaNacimiento" id="FechaNacimiento" type="date" class="form-control my-2" />
+										placeholder="Apellido" maxLength="64" /> 
+										<input name="FechaNacimiento" id="FechaNacimiento" type="date" class="form-control my-2" />
 									<select class="custom-select" name="Localidad" id="Localidad">
 										<%         for (Localidad l : loc) { %>
 									<option value="<%= l.getId()%>"><%= l.getDescripcion()%></option>
 									<% }  %>
-									</select> <input name="Telefono" type="text" class="form-control my-2"
-										placeholder="Teléfono" id="Telefono" /> <input
-										name="Legajo" type="text" class="form-control my-2"
-										placeholder="Legajo" id="Legajo" />
+									</select> 
+									<input name="Telefono" type="text" class="form-control my-2"
+										placeholder="Teléfono" id="Telefono" maxLength="20" onkeypress='return event.charCode >= 48 && event.charCode <= 57' /> 
+										<input name="Legajo" type="number" class="form-control my-2"
+										placeholder="Legajo" id="Legajo" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
 								</div>
 							</div>
 							<div class="card-footer text-right">
@@ -149,7 +169,7 @@
 
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-9">
 				<div class="card bg-secondary">
 					<div class="card-body">
 						<table id="table_id" class="display">
